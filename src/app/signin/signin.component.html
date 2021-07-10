@@ -39,23 +39,50 @@
                     <div class="error" *ngIf="error">
                         {{errormessage}}
                     </div>
-                    <form [formGroup]="formlogin" class="input">
-                        <div *ngFor="let x of signindata">
-                            <input placeholder="{{x.placeholder}}" formControlName={{x.formname}} type={{x.type}}
-                                class="ip" *ngIf="!x.error">
-                            <div *ngIf="x.error" class="errormsg">
-                                <div class="message sb1">
-                                    {{x.errormsg}}
+                    <form [formGroup]="formlogin" class="input reg">
+                        <div style="flex-basis: 90%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <div *ngFor="let x of signindata">
+                                <input placeholder="{{x.placeholder}}" formControlName={{x.formname}} type={{x.type}}
+                                    class="ip" *ngIf="!x.error">
+                                <div *ngIf="x.error" class="errormsg">
+                                    <div class="message sb1">
+                                        {{x.errormsg}}
+                                    </div>
+                                    <input placeholder={{x.placeholder}} formControlName={{x.formname}} type={{x.type}}
+                                        class="ip iperror">
                                 </div>
-                                <input placeholder={{x.placeholder}} formControlName={{x.formname}} type={{x.type}}
-                                    class="ip iperror">
                             </div>
+                            <a routerLink="/forgotPassword" class="forgot">
+                                Forgot Password?
+                            </a>
                         </div>
-                        <a routerLink="/forgotPassword" class="forgot">
-                            Forgot Password?
-                        </a>
+                        
+                        <div class = "icons">
+                            <div class = "icon" style = "background-image: url(../../assets/images/google.png)" (click) = "signupwithgoogle()"></div>
+                            <div class = "icon" style = "background-image: url(../../assets/images/facebook.png)" (click) = "signupwithfacebook()"></div>
+                            <div class = "icon" style = "background-image: url(../../assets/images/twitter.png)" (click) = "signupwithtwitter()"></div>
+                            <div class = "icon" style = "background-image: url(../../assets/images/github.png)" (click) = "signupwithgithub()"></div>
+                        </div>
                     </form>
-                    <div class="submit" (click)="submit()">
+                    <div (click) = "phone()" class = "forget"> <div *ngIf = "phoneno">Signup with email and Password</div><div *ngIf = "!phoneno">Signup with phone number</div></div>
+                    <div *ngIf="windowRef.confirmationResult">
+                        <hr>
+                        <label for="code">Enter your Verification Code Here</label><br>
+                        <input type="text" name="code" [(ngModel)]="verificationCode">
+                    
+                        <button (click)="verifyLoginCode()">Verify</button>
+                      </div>
+                      <div *ngIf="user">
+                        You have successfully logged in with your phone number!
+                      
+                        UserId: {{ user?.uid }}
+                      
+                      </div>
+                    <div id="recaptcha-container" [ngClass]="{
+                        'phno': phoneno,
+                        'nphno': !phoneno
+                    }"></div>
+                    <div class="submit" (click)="sendLoginCode()">
                         <div class="custbutton">
                             Login
                         </div>
@@ -76,7 +103,7 @@
                     <div class="error" *ngIf="error">
                         {{errormessage}}
                     </div>
-                    <form [formGroup]="formreg" class="input reg">
+                    <form [formGroup]="formreg" class="input">
                         <div class="regdiv">
                             <div *ngFor="let x of signupdata" style="height: 20%;">
                                 <input placeholder="{{x.placeholder}}" formControlName={{x.formname}} type={{x.type}}
@@ -90,33 +117,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class = "icons">
-                            <div class = "icon" style = "background-image: url(../../assets/images/google.png)" (click) = "signupwithgoogle()"></div>
-                            <div class = "icon" style = "background-image: url(../../assets/images/facebook.png)" (click) = "signupwithgoogle()"></div>
-                            <div class = "icon" style = "background-image: url(../../assets/images/twitter.png)" (click) = "signupwithgoogle()"></div>
-                            <div class = "icon" style = "background-image: url(../../assets/images/github.png)" (click) = "signupwithgoogle()"></div>
-                        </div>
                         
                     </form>
-
-                    <div (click) = "phone()" class = "forget"> <div *ngIf = "phoneno">Signup with email and Password</div><div *ngIf = "!phoneno">Signup with phone number</div></div>
-                    <div *ngIf="windowRef.confirmationResult">
-                        <hr>
-                        <label for="code">Enter your Verification Code Here</label><br>
-                        <input type="text" name="code" [(ngModel)]="verificationCode">
-                    
-                        <button (click)="verifyLoginCode()">Verify</button>
-                      </div>
-                      <div *ngIf="user">
-                        You have successfully logged in with your phone number!
-                      
-                        UserId: {{ user?.uid }}
-                      
-                      </div>
-                    <div id="recaptcha-container" [ngClass]="{
-                        'phno': phoneno,
-                        'nphno': !phoneno
-                    }"></div>
                     <div class="submit" (click)="sendLoginCode()">
                         <div class="custbutton">
                             Register

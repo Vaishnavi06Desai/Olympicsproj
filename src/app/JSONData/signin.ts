@@ -1,4 +1,4 @@
-export let logindata = [
+export let logindataemail = [
     {
         "placeholder": "Enter Email",
         "formname": "email",
@@ -15,7 +15,7 @@ export let logindata = [
     }
 ]
 
-export let regdataemail = [
+export let regdata = [
 
     {
         "placeholder": "Enter Email",
@@ -42,7 +42,7 @@ export let regdataemail = [
     }
 ]
 
-export let regdataphoneno = [
+export let logindataphoneno = [
 
     {
         "placeholder": "Enter Phone Number",

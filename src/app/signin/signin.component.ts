@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { logindata, regdataemail, regdataphoneno } from '../JSONData/signin';
+import { logindataemail, logindataphoneno, regdata } from '../JSONData/signin';
 import { AuthService } from '../services/auth.service';
 import { WindowService } from '../services/window.service';
 
@@ -32,10 +32,13 @@ export class SigninComponent implements OnInit {
   selectedrole: any;
   signindata: any;
   signupdata: any;
-  signupdataemail: any;
-  signupdataphoneno: any;
+  signindataemail: any;
+  signindataphoneno: any;
 
-  provider: any;
+  providergoogle: any;
+  providergithub: any;
+  providertwitter: any;
+  providerfacebook: any;
 
   config = {
     apiKey: "AIzaSyAzmqI7vG8pdJXJcV-oEw-g1VAU_ziSL34",
@@ -66,14 +69,15 @@ export class SigninComponent implements OnInit {
 
   formlogin = new FormGroup({
     email: new FormControl(''),
-    password: new FormControl('')
+    password: new FormControl(''),
+    phone: new FormControl('')
   })
 
   formreg = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
     confirmpassword: new FormControl(''),
-    phone: new FormControl(''),
+    
   })
 
   ngOnInit(): void {
@@ -82,14 +86,17 @@ export class SigninComponent implements OnInit {
     this.windowRef = this.win.windowRef;
     this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     this.windowRef.recaptchaVerifier.render();
-    this.signindata = logindata;
+    this.signupdata = regdata;
 
-    this.signupdataphoneno = regdataphoneno;
-    this.signupdataemail = regdataemail;
-    this.signupdata = this.signupdataemail;
+    this.signindataphoneno = logindataphoneno;
+    this.signindataemail = logindataemail;
+    this.signindata = this.signindataemail;
 
-    this.provider = new firebase.auth.GoogleAuthProvider();
-    this.provider = new firebase.auth.GithubAuthProvider();
+    this.providergoogle = new firebase.auth.GoogleAuthProvider();
+    this.providergithub = new firebase.auth.GithubAuthProvider();
+    this.providertwitter = new firebase.auth.TwitterAuthProvider();
+    this.providerfacebook = new firebase.auth.FacebookAuthProvider();
+
     // this.windowRef = this.win.windowRef
     // this.windowRef.recaptchaVerifier = this.as.getaf().signInWithPhoneNumber
 
@@ -99,19 +106,35 @@ export class SigninComponent implements OnInit {
   phone() {
     this.phoneno = !this.phoneno;
     if (this.phoneno == true) {
-      this.signupdata = this.signupdataphoneno;
+      this.signindata = this.signindataphoneno;
       // document.querySelector("#recaptcha-container").style.display = "none";
     }
 
     else {
       // this.windowRef.recaptchaVerifier.clear();
-      this.signupdata = this.signupdataemail;
+      this.signindata = this.signindataemail;
     }
   }
 
-  signupwithgoogle() {
+  signupwithgoogle(){
+    this.signupwith3party(this.providergoogle);
+  }
+
+  signupwithgithub(){
+    this.signupwith3party(this.providergithub);
+  }
+
+  signupwithtwitter(){
+    this.signupwith3party(this.providertwitter);
+  }
+
+  signupwithfacebook(){
+    this.signupwith3party(this.providerfacebook);
+  }
+
+  signupwith3party(provider) {
     firebase.auth()
-      .signInWithPopup(this.provider)
+      .signInWithPopup(provider)
       .then((result) => {
         /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
@@ -135,7 +158,7 @@ export class SigninComponent implements OnInit {
 
     const appVerifier = this.windowRef.recaptchaVerifier;
     console.log("hii");
-    firebase.auth().signInWithPhoneNumber("+91" + this.formreg.get("phone").value, appVerifier)
+    firebase.auth().signInWithPhoneNumber("+91" + this.formlogin.get("phone").value, appVerifier)
       .then(result => {
 
         this.windowRef.confirmationResult = result;
