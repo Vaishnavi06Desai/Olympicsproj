@@ -4,10 +4,16 @@ import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
+import { NonogramComponent } from './nonogram/nonogram.component';
 const routes: Routes = [
   {
     path: "signin",
     component: SigninComponent
+  }
+  ,
+  {
+    path: "nonogram",
+    component: NonogramComponent
   },
   {
     path: "home",
