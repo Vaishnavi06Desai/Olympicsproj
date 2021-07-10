@@ -17,6 +17,7 @@ import { WindowService } from './services/window.service';
 
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { HomeComponent } from './home/home.component';
+import { BoardComponent } from './board/board.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     SigninComponent,
     HomeComponent,
-    NonogramComponent
+    NonogramComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,

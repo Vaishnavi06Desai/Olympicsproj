@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NonogramComponent } from './nonogram/nonogram.component';
+import { BoardComponent } from './board/board.component';
 const routes: Routes = [
   {
     path: "signin",
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: "home",
     component: HomeComponent
+  },
+  {
+    path:"board",
+    component: BoardComponent
   },
   { path: '', redirectTo: '/signin', pathMatch: 'full' }
 ];
