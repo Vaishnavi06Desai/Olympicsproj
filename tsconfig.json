@@ -13,6 +13,7 @@
     "types": ["jquery"],
     "target": "es2015",
     "module": "es2020",
+    "types":["jquery"],
     "lib": [
       "es2018",
       "dom"

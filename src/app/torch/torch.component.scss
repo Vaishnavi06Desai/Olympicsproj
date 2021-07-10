@@ -1,0 +1,46 @@
+.main{
+  height:100vh;
+  max-width:100vw;
+}
+.cont {
+  padding: 0;
+  margin: 0;
+  background-color:rgba(0,0,0,1.00);
+	color:rgba(255,255,255,1.00);
+  overflow: hidden;
+}
+
+.cont * {
+  z-index: 20;
+  color: rgba(0,0,0,1.00);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#content {
+  width: 100%;
+  height: 100vh;
+}
+
+#light {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  box-shadow: inset 0 0 150px 150px #000;
+  background: #fff;
+  z-index: 10;
+}
+
+.light-off {
+  box-shadow: inset 0 0 150px 250px #000 !important;
+}
+
+.pogi {
+  position: absolute;
+  top: 40%;
+  left: 45%;
+}
