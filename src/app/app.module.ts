@@ -15,13 +15,15 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { WindowService } from './services/window.service';
 import { HomeComponent } from './home/home.component';
+import { PuzzleComponent } from './puzzle/puzzle.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
-    HomeComponent
+    HomeComponent,
+    PuzzleComponent
   ],
   imports: [
     BrowserModule,
