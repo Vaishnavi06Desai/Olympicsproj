@@ -65,7 +65,7 @@
                         </div>
                     </form>
                     <div (click) = "phone()" class = "forget"> <div *ngIf = "phoneno">Signup with email and Password</div><div *ngIf = "!phoneno">Signup with phone number</div></div>
-                    <div *ngIf="windowRef.confirmationResult">
+                    <div *ngIf="!windowRef.confirmationResult">
                         <hr>
                         <label for="code">Enter your Verification Code Here</label><br>
                         <input type="text" name="code" [(ngModel)]="verificationCode">
