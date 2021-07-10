@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import firebase from 'firebase/app';
@@ -15,13 +15,17 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { WindowService } from './services/window.service';
 import { HomeComponent } from './home/home.component';
+import { PlantComponent } from './plant/plant.component';
+import { TorchComponent } from './torch/torch.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
-    HomeComponent
+    HomeComponent,
+    PlantComponent,
+    TorchComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +35,7 @@ import { HomeComponent } from './home/home.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [WindowService],
   bootstrap: [AppComponent]
 })
