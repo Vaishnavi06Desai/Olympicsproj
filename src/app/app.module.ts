@@ -25,11 +25,8 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
     AppComponent,
     SigninComponent,
     HomeComponent,
-<<<<<<< HEAD
-    PuzzleComponent
-=======
+    PuzzleComponent,
     NonogramComponent
->>>>>>> 6ecaca7021c2aa19364e3ecc5acf998e25b852eb
   ],
   imports: [
     BrowserModule,

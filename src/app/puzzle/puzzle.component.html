@@ -1,2 +1,22 @@
-<div class = "main">
+<div class="main">
+    <div class = "card">
+        <div class = "panel">
+            <div *ngFor = "let i of colbuttons">
+                <div class = "color" [ngClass] = "{
+                    'red': i.red,
+                    'green': i.green,
+                    'blue': i.blue,
+                    'yellow': i.yellow,
+                    'pink': i.pink
+                }"></div>
+            </div>
+        </div>
+
+        <div class = "panel">
+            <div *ngFor = "let i of colors">
+                <div class = "color colpan {{i}}" (click) = "fill(i)"></div>
+            </div>
+        </div>
+        
     </div>
+</div>
