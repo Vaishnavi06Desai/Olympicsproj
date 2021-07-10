@@ -6,7 +6,7 @@ main {
   text-align: center;
     grid-template-columns: 10vw 10vw 10vw;
     grid-gap:10px;
-    
+  
 }
   
 app-square {
@@ -34,7 +34,7 @@ button {
     box-shadow: 0 0 10px 0 #FF10F0 inset, 0 0 20px 2px #FF10F0;
     border: 3px solid #FF10F0;
   }
-  .bg{
+  .bg{ overflow-x: hidden; 
       height: 100vh;
       width: 100vw;
       background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); }
