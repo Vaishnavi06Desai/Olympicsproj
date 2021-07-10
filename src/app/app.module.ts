@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import firebase from 'firebase/app';
@@ -17,6 +17,8 @@ import { WindowService } from './services/window.service';
 
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { HomeComponent } from './home/home.component';
+import { PlantComponent } from './plant/plant.component';
+import { TorchComponent } from './torch/torch.component';
 import { BoardComponent } from './board/board.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
 
@@ -26,6 +28,8 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
     AppComponent,
     SigninComponent,
     HomeComponent,
+    PlantComponent,
+    TorchComponent,
 
     NonogramComponent,
     BoardComponent,
@@ -41,6 +45,7 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [WindowService],
   bootstrap: [AppComponent]
 })
