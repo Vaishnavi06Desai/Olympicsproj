@@ -8,6 +8,9 @@ export class AuthService {
 
   constructor(private af: AngularFireAuth) { }
 
+  authstate(){
+    return this.af.onAuthStateChanged;
+  }
   getaf(){
     return this.af;
   }
@@ -17,7 +20,7 @@ export class AuthService {
   }
 
   login(user){
-    return this.af.signInWithEmailAndPassword(user.email, user.password);
+    return this.af.signInWithEmailAndPassword(user.email, user.password)
   }
 
   signup(user){
@@ -26,5 +29,9 @@ export class AuthService {
 
   logout() {
     return this.af.signOut();
+  }
+
+  forgot(email){
+    this.af.sendPasswordResetEmail(email);
   }
 }
