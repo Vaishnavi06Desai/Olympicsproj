@@ -1,0 +1,70 @@
+.main{
+    background-image: url("../../assets/images/HPBG.jpg");
+    background-size: 100% 100%;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.circle{
+    position:absolute;
+    width: 150px;
+    height: 150px;
+    margin-top: 9%;
+    margin-right: 0.5%;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    transform-style: preserve-3d;
+}
+.circle img{
+    position: absolute;
+    animation: animate 6s;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 	infinite; 
+
+}
+.triangle{
+    position:absolute;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    transform-style: preserve-3d;
+}
+.triangle img{
+    position: absolute;
+    animation: animate 8s;
+    animation-duration: s;
+    animation-timing-function: linear;
+    animation-iteration-count: 	infinite; 
+}
+.line{
+    position:absolute;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    transform-style: preserve-3d;
+}
+.line img{
+    position: absolute;
+}
+
+@keyframes animate {
+    0%
+    {
+        z-index:10;
+        transform: rotateY(0deg);
+    }
+    25%
+    {
+        z-index:5;
+        transform: rotateY(90deg);
+    }
+}
+

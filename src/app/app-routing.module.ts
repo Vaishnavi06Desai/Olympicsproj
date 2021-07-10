@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NonogramComponent } from './nonogram/nonogram.component';
@@ -8,14 +9,16 @@ const routes: Routes = [
     path: "signin",
     component: SigninComponent
   }
-  ,{
-    path: "forgotPassword",
-    component: ForgotPasswordComponent
-  },
+  ,
   {
     path: "nonogram",
     component: NonogramComponent
-  }
+  },
+  {
+    path: "home",
+    component: HomeComponent
+  },
+  { path: '', redirectTo: '/signin', pathMatch: 'full' }
 ];
 
 @NgModule({

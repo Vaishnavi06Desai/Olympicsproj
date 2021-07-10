@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { logindataemail, logindataphoneno, regdata } from '../JSONData/signin';
 import { AuthService } from '../services/auth.service';
@@ -8,6 +8,16 @@ import { WindowService } from '../services/window.service';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { forbiddenNameValidator } from '../Validators/forbidden-name';
+
+export class MyErrorStateMatcher implements MyErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const invalidCtrl = !!(control && control.invalid && control.parent.dirty);
+    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+
+    return (invalidCtrl || invalidParent);
+  }
+}
 
 @Component({
   selector: 'app-signin',
@@ -51,38 +61,84 @@ export class SigninComponent implements OnInit {
 
   move() {
     this.login = !this.login;
+    this.error = false;
   }
 
   submit() {
-    // if(this.login){
-    //   this.as.login(this.formlogin.value).then(res => {
-    //     this.router.navigate(['/home']);
-    //   })
-    // }
-    // else{
-    //   this.formreg.get("role").setValue(this.signupdata[5].value);
-    //   this.as.signup(this.formreg.value).then(res => {
-    //     this.router.navigate(['/home']);
-    //   })
-    // }
+    if(this.isdisabled()){this.error = "Please fill all fields properly."; return}
+    if (this.login) {
+      if(!this.phoneno){
+        this.as.login(this.formlogin.value).then(res => {
+          // this.router.navigate(['/home']);
+        }).catch(err => {
+          this.error = err.message;
+        })
+      }
+
+      else{
+        this.sendLoginCode();
+      }
+      
+    }
+    else {
+      this.as.signup(this.formreg.value).then(res => {
+        firebase.auth().currentUser.sendEmailVerification()
+          .then(() => {
+            this.login = true;
+          }).catch(err => {
+            this.error = err.message;
+          })
+        
+      }).catch(err => {
+        this.error = err.message;
+      })
+    }
+  }
+
+  isdisabled(){
+    if(this.login){
+      if(this.phoneno){
+        if (this.formlogin.get('phone')!.invalid) {
+          return true;
+          
+        }
+      }
+      if (this.formlogin.get('email')!.invalid) {
+        return true;
+      }
+    }
+
+    else{
+      if(this.formreg.invalid){
+        return true;
+      }
+    }
   }
 
   formlogin = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-    phone: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.pattern('^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')]),
+    password: new FormControl('', [Validators.required,]),
+    phone: new FormControl('', [Validators.required, Validators.pattern('[2-9]{2}\\d{8}')])
   })
 
   formreg = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-    confirmpassword: new FormControl(''),
-    
+    email: new FormControl('', [Validators.required, Validators.pattern('^(([^<>()[\\]\\\\.,;:\\s@\\"]+(\\.[^<>()[\\]\\\\.,;:\\s@\\"]+)*)|(\\".+\\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$')]),
+    password: new FormControl('', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/)]),
+    confirmpassword: new FormControl('', [Validators.required]),
+
   })
 
   ngOnInit(): void {
+    this.as.authstate()((user) => {
+      if(user){
+        this.router.navigate(['/home']);
+      }
+      else{
+        this.login = true;
+      }
+    })
     firebase.initializeApp(this.config);
-
+    this.formreg.setValidators(this.checkPasswords);
     this.windowRef = this.win.windowRef;
     this.windowRef.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
     this.windowRef.recaptchaVerifier.render();
@@ -116,19 +172,19 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  signupwithgoogle(){
+  signupwithgoogle() {
     this.signupwith3party(this.providergoogle);
   }
 
-  signupwithgithub(){
+  signupwithgithub() {
     this.signupwith3party(this.providergithub);
   }
 
-  signupwithtwitter(){
+  signupwithtwitter() {
     this.signupwith3party(this.providertwitter);
   }
 
-  signupwithfacebook(){
+  signupwithfacebook() {
     this.signupwith3party(this.providerfacebook);
   }
 
@@ -154,6 +210,17 @@ export class SigninComponent implements OnInit {
       });
   }
 
+  formlog(name: string) { return this.formlogin.get(name)!; }
+  formregget(name: string) { return this.formreg.get(name)!; }
+
+  get emaillog() { return this.formlogin.get('email')!; }
+  get phonelog() { return this.formlogin.get('phone')!; }
+  get emailreg() { return this.formreg.get('email')!; }
+  get password() { return this.formreg.get('password')!; }
+  get confirmp() { return this.formreg.get('confirmpassword')!; }
+
+
+  // getname()
   sendLoginCode() {
 
     const appVerifier = this.windowRef.recaptchaVerifier;
@@ -177,6 +244,20 @@ export class SigninComponent implements OnInit {
 
       })
       .catch(error => console.log(error, "Incorrect code entered?"));
+  }
+
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+    let pass = group.controls.password.value;
+    let confirmPass = group.controls.confirmpassword.value;
+
+    return pass === confirmPass ? null : { notSame: true }
+  }
+
+  forgot() {
+    if (this.formlogin.get('email')!.invalid) {
+      return;
+    }
+    this.as.forgot(this.formlogin.get('email').value);
   }
 
 }

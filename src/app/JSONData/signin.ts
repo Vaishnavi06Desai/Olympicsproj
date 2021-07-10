@@ -4,14 +4,14 @@ export let logindataemail = [
         "formname": "email",
         "type": "email",
         "error": false,
-        "errormsg": ""
+        "patternerror": "Please enter a valid email"
     },
     {
         "placeholder": "Enter Password",
         "formname": "password",
         "type": "password",
         "error": false,
-        "errormsg": ""
+
     }
 ]
 
@@ -22,7 +22,7 @@ export let regdata = [
         "formname": "email",
         "type": "email",
         "error": false,
-        "errormsg": ""
+        "patternerror": "Please enter a valid email"
     },
 
     {
@@ -30,7 +30,7 @@ export let regdata = [
         "formname": "password",
         "type": "password",
         "error": false,
-        "errormsg": ""
+        "patternerror": "[a-z],[A-Z],[0-9],a special character"
     },
 
     {
@@ -38,7 +38,7 @@ export let regdata = [
         "formname": "confirmpassword",
         "type": "password",
         "error": false,
-        "errormsg": ""
+        "matcherror": "The passwords don't match"
     }
 ]
 
@@ -47,9 +47,9 @@ export let logindataphoneno = [
     {
         "placeholder": "Enter Phone Number",
         "formname": "phone",
-        "type": "number",
+        "type": "text",
         "error": false,
-        "errormsg": ""
+        "patternerror": "Please enter a valid phone number"
     }
 ]
 
