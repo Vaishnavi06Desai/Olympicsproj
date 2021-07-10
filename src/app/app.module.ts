@@ -18,6 +18,7 @@ import { WindowService } from './services/window.service';
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { HomeComponent } from './home/home.component';
 import { BoardComponent } from './board/board.component';
+import { PuzzleComponent } from './puzzle/puzzle.component';
 
 
 @NgModule({
@@ -25,8 +26,12 @@ import { BoardComponent } from './board/board.component';
     AppComponent,
     SigninComponent,
     HomeComponent,
+
     NonogramComponent,
-    BoardComponent
+    BoardComponent,
+
+    PuzzleComponent,
+    NonogramComponent
   ],
   imports: [
     BrowserModule,

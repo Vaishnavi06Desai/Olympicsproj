@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { PuzzleComponent } from './puzzle/puzzle.component';
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { BoardComponent } from './board/board.component';
 const routes: Routes = [
@@ -21,7 +22,9 @@ const routes: Routes = [
   },
   {
     path:"board",
-    component: BoardComponent
+    component: BoardComponent},{
+    path: "puzzle",
+    component: PuzzleComponent
   },
   { path: '', redirectTo: '/signin', pathMatch: 'full' }
 ];
