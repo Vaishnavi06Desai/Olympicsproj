@@ -21,6 +21,7 @@ import { PlantComponent } from './plant/plant.component';
 import { TorchComponent } from './torch/torch.component';
 import { BoardComponent } from './board/board.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
+import { BallsComponent } from './balls/balls.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
     BoardComponent,
 
     PuzzleComponent,
-    NonogramComponent
+    NonogramComponent,
+    BallsComponent
   ],
   imports: [
     BrowserModule,
