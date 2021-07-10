@@ -29,10 +29,8 @@ import { BallsComponent } from './balls/balls.component';
     AppComponent,
     SigninComponent,
     HomeComponent,
-<<<<<<< HEAD
     PuzzleComponent,
-    NonogramComponent
-=======
+    NonogramComponent,
     PlantComponent,
     TorchComponent,
 
@@ -42,7 +40,6 @@ import { BallsComponent } from './balls/balls.component';
     PuzzleComponent,
     NonogramComponent,
     BallsComponent
->>>>>>> 9fd131ecbb3366620f6286ce91777446511ac6df
   ],
   imports: [
     BrowserModule,
