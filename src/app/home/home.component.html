@@ -1,21 +1,25 @@
 <div class="main">
     <!-- <div class="tablet"><img height="50" src="../../assets/images/tablet.png"></div> -->
+    <a href="https://vr.jv20201.repl.co/"class = "arrow down"> Puzzle 4</a>
+    <div routerLink="/plant" class = "arrow left">Puzzle 1</div>
+    <div routerLink ="/balls"class = "arrow right"> Puzzle 2</div>
+    <div routerLink="/torch" class = "arrow door">Puzzle 3</div>
     <div class="tictacblet" (click) = "tictactoe = true"><img height="70" src="../../assets/images/TicTacblet.png"></div>
     <div class="tablet" (click) = "cowsandbulls = true"><img height="50" src="../../assets/images/tablet.png"></div>
     <div class="robot" (click)="toggleconvo()"></div>
     <div class="roboconvo" *ngIf="convo" style="color: white;">
         <!-- <div *ngIf = "chosen == -1"> -->
         <div class="leftconvo">{{conversation[currconvo]}}</div>
-        <div class="rightconvo" *ngIf="!isconvooptions()" (click)="nextcon()">{{conversationyou[currconvo]}}</div>
-        <div class="rightconvo" *ngIf="isconvooptions()">
-            <div *ngFor="let o of options; let i = index" (click)="pickoption(i)">{{o}}</div>
+        <div class="rightconvo" *ngIf="!isconvooptions()" (click)="nextcon()"><div class = "custbutton">{{conversationyou[currconvo]}}</div></div>
+        <div class="rightconvo op" *ngIf="isconvooptions()">
+            <div *ngFor="let o of options; let i = index" (click)="pickoption(i)"><div class = "custbutton" style="border: solid thin black; margin: 2%;">{{o}}</div> </div>
         </div>
         <!-- </div> -->
 
     </div>
 
     <form [formGroup]="formanswer" class="forminp">
-        <div *ngFor="let x of ['puzzle1', 'puzzle2', 'puzzle3', 'puzzle4', 'puzzle5', 'puzzle6']" class="form">
+        <div *ngFor="let x of ['puzzle1', 'puzzle2', 'puzzle3', 'puzzle4', 'puzzle5', 'puzzle6', 'puzzle7']" class="form">
         
             <input placeholder="Enter answer for puzzle {{x}}" formControlName={{x}} type="text" class="ip">
             <div *ngIf="formcont(x).invalid && (formcont(x).dirty || formcont(x).touched)"
@@ -30,10 +34,7 @@
         </div>
         <div class="custbutton ip">Submit</div>
     </form>
-    <a href="https://vr.jv20201.repl.co/"class = "arrow down"></a>
-    <div routerLink="/plant" class = "arrow left"></div>
-    <div routerLink ="/balls"class = "arrow right"></div>
-    <div routerLink="/torch" class = "arrow door"></div>
+    
     <app-puzzle *ngIf = "cowsandbulls" style="position: absolute; top: 20vh; left: 20vw;"></app-puzzle>
     <div *ngIf = "cowsandbulls" style="position: absolute; top: 20vh; left: 79vw; font-size: 130%; cursor: pointer;" (click) = "cowsandbulls = false" class = "candbcross">X</div>
     <app-board *ngIf = "tictactoe" style="position: absolute; top: 20vh; left: 20vw;"></app-board>

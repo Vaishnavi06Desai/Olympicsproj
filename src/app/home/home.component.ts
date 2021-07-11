@@ -43,12 +43,13 @@ export class HomeComponent implements OnInit {
   }
 
   formanswer = new FormGroup({
-    puzzle1: new FormControl('', [Validators.required, Validators.pattern('123')]),
-    puzzle2: new FormControl('', [Validators.required, Validators.pattern('123')]),
-    puzzle3: new FormControl('', [Validators.required, Validators.pattern('')]),
-    puzzle4: new FormControl('', [Validators.required, Validators.pattern('')]),
-    puzzle5: new FormControl('', [Validators.required, Validators.pattern('')]),
-    puzzle6: new FormControl('', [Validators.required, Validators.pattern('')]),
+    puzzle1: new FormControl('', [Validators.required, Validators.pattern('623890')]),
+    puzzle2: new FormControl('', [Validators.required, Validators.pattern('5340')]),
+    puzzle3: new FormControl('', [Validators.required, Validators.pattern('C')]),
+    puzzle4: new FormControl('', [Validators.required, Validators.pattern('green')]),
+    puzzle5: new FormControl('', [Validators.required, Validators.pattern('5614251')]),
+    puzzle6: new FormControl('', [Validators.required, Validators.pattern('VAJ')]),
+    puzzle7: new FormControl('', [Validators.required, Validators.pattern('hFdtRqq12')]),
   })
 
   returnformname(i) {
@@ -112,5 +113,10 @@ export class HomeComponent implements OnInit {
       this.conversationyou = ["how do i get out of here?", "Do you know the way out of this portal?", "End"]
     }
 
+  }
+
+  submit(){
+    if(this.formanswer.invalid) return;
+    this.router.navigate([''])
   }
 }
