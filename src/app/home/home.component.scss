@@ -11,11 +11,22 @@
 .tablet{
     height:60px;
     cursor: pointer;
+    // z-index: 1000;
 }
 .tablet img{
     position:absolute;
     top: 26vh;
     left: 27vw;
+    
+    // margin-bottom: 100%;
+}
+
+.tictacblet img{
+    position:absolute;
+    top: 28vh;
+    left: 52vw;
+    cursor: pointer;
+    // z-index: 1000;
     // margin-bottom: 100%;
 }
 .circle{
@@ -81,7 +92,7 @@
 
 .robot{
     position: absolute;
-    border: solid black;
+    
     height: 40vh;
     width: 7vw;
     top: 60vh;
@@ -90,6 +101,17 @@
     cursor: pointer;
 }
 
+.robot:hover{
+    border: solid black;
+}
+
+.tablet:hover{
+    border: solid black;
+}
+
+.tictacblet:hover{
+    border: solid black;
+}
 .roboconvo{
     background-color: rgba(0, 0, 0, 0.5);
     height: 15vh;
