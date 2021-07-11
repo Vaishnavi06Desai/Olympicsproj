@@ -14,6 +14,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { WindowService } from './services/window.service';
+import { DragDropModule} from '@angular/cdk/drag-drop';
 
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { HomeComponent } from './home/home.component';
@@ -47,7 +48,8 @@ import { BallsComponent } from './balls/balls.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    DragDropModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [WindowService],
