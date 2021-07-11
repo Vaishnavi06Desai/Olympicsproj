@@ -1,8 +1,21 @@
 .main{
     height:100vh;
-    width:100vw;
+    max-width:100vw;
 }
-
+.bg img{
+    height:100vh;
+    width:100%;
+    position: absolute;
+}
+.toys img{
+    position:absolute;
+    height: 20%;
+    margin-top: 30%;
+    // left: 20vw;
+}
+.i0{
+    margin-left:40%;
+}
     #div1 {
     width: 350px;
     height: 70px;
