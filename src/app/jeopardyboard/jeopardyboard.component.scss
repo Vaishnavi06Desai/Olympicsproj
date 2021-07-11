@@ -144,7 +144,27 @@ model-viewer{
 .ques{
     height: 30vh;
     color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 200%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
+.ansopt{
+    height: 50vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 
+.option{
+    flex-basis: 50%;
+    margin: 0% 2%;
+    width: 20vw;
+    height: 10vh;
+    background-color: white;
+    color: black;
+}
 

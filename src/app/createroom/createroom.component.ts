@@ -46,7 +46,7 @@ export class CreateroomComponent implements OnInit {
       localStorage.setItem('code', res.id);
       
       localStorage.setItem('player', "0");
-      this.db.collection("Rooms").doc(res.id).collection("Players").add({ "name": this.name.get("nameuser").value }).then(res => {
+      this.db.collection("Rooms").doc(res.id).collection("Players").add({ "name": this.name.get("nameuser").value, "Score": 0 }).then(res => {
         localStorage.setItem('name', res.id);
         this.router.navigate(["/jeopardy"], { queryParams: { code: res.id } });
       }).catch(e => {
@@ -106,8 +106,8 @@ export class CreateroomComponent implements OnInit {
         console.log(this.name.get("nameuser").value);
         localStorage.setItem('code', this.name.get("code").value);
         localStorage.setItem('name', this.name.get("nameuser").value);
-        this.db.collection("Rooms").doc(this.name.get("code").value).collection("Players").add({ "name": this.name.get("nameuser").value }).then(ress => {
-
+        this.db.collection("Rooms").doc(this.name.get("code").value).collection("Players").add({ "name": this.name.get("nameuser").value, "Score": 0 }).then(ress => {
+          localStorage.setItem('name', ress.id);
           this.router.navigate(["/jeopardy"], { queryParams: { code: this.name.get("code").value } });
         }).catch(e => {
           console.log(e);

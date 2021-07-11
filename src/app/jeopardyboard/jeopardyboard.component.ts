@@ -20,11 +20,18 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   maxplayer: any;
   currentquestion: any;
   ismyquestion: boolean = false;
+  picked: boolean = false;
   status: boolean = false;
-  levels = { 1: "Easy", 2: "Medium", 3: "Difficult" }
-  done = [];
-  questions: Array<Array<any>> = [[], [], []];
+  levels = { 0: "Easy", 1: "Medium", 2: "Difficult" }
+  donex = [];
+  doney = [];
+  questionnow: any;
+  optionsnow: any = [];
+  questions: Array<any> = [{}, {}, {}];
   noofplayers = 0;
+  curx;
+  cury;
+  scores: any;
   constructor(private db: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
@@ -50,59 +57,65 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   getnumberofplayers() {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").snapshotChanges().subscribe((res: any) => {
       this.noofplayers = res.length;
+      this.scores = res;
     })
   }
 
   getturn() {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe((res: any) => {
       console.log(res.payload.data())
+      if(res.payload.data().Turn == 18){console.log("End game")}
       if (res.payload.data().Turn % Number(this.maxplayer) == Number(localStorage.getItem("player"))) this.ismyquestion = true;
-      else this.ismyquestion = false;
+      else { this.ismyquestion = false; this.picked = false }
     })
   }
 
   gettopics() {
     this.db.collection("Topics").snapshotChanges().subscribe(res => {
-      if(this.topics.length == 3) return;
+      if (this.topics.length == 3) return;
       for (let i of [1, 2, 3]) {
         var rand = Math.trunc(Math.random() * (res.length));
         this.topics.push(res[rand].payload.doc.id);
-        res.slice(rand, 1);
+        console.log(res)
+        res.splice(rand, 1);
       }
       console.log(this.topics);
       this.getquestions();
     })
   }
 
+  getquestion() {
+
+  }
   getquestions() {
     for (let x of [0, 1, 2]) {
       this.db.collection("Topics").doc(this.topics[x]).collection("Easy").snapshotChanges().subscribe(res => {
         // for (let i of [0, 1, 2]) {
-        if (this.questions[x].length != 3) {
-          var rand = Math.trunc(Math.random() * (res.length));
-          this.questions[x].push(res[rand].payload.doc.id);
-          res.slice(rand, 1);
-          console.log(this.questions)
-        };
+        // if (this.questions[x].length != 3) {
+        var rand = Math.trunc(Math.random() * (res.length));
+        this.questions[x]["Easy"] = (res[rand].payload.doc.id);
+        res.slice(rand, 1);
+        console.log(this.questions)
+        // }
 
         this.db.collection("Topics").doc(this.topics[x]).collection("Medium").snapshotChanges().subscribe(res => {
           // for (let i of [0, 1, 2]) {
-          if (this.questions[x].length != 3) {
-            var rand = Math.trunc(Math.random() * (res.length));
-            this.questions[x].push(res[rand].payload.doc.id);
-            res.slice(rand, 1);
-            console.log(this.questions)
-          };
-         
+          // if (this.questions[x].length != 3) {
+          var rand = Math.trunc(Math.random() * (res.length));
+          this.questions[x]["Medium"] = (res[rand].payload.doc.id);
+          res.slice(rand, 1);
+          console.log(this.questions)
+          // }
+
           this.db.collection("Topics").doc(this.topics[x]).collection("Difficult").snapshotChanges().subscribe(res => {
             // for (let i of [0, 1, 2]) {
-            if (this.questions[x].length != 3) {
-              var rand = Math.trunc(Math.random() * (res.length));
-              this.questions[x].push(res[rand].payload.doc.id);
-              res.slice(rand, 1);
-              console.log(this.questions)
-            }
-           
+            // if (this.questions[x].length != 3) {
+            var rand = Math.trunc(Math.random() * (res.length));
+            this.questions[x]["Difficult"] = (res[rand].payload.doc.id);
+            res.slice(rand, 1);
+            console.log(this.questions)
+            // }
+
             // }
           })
           // }
@@ -132,10 +145,24 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).update({ status: true });
   }
   question(x, y) {
-    this.db.collection("Topics").doc(this.topics[x]).collection(this.levels[y]).snapshotChanges().subscribe(res => {
-      var rand = Math.trunc(Math.random() * (res.length));
-
-      // this.currentquestion = res[]
+    this.curx = x;
+    this.cury = y;
+    if(x.toString() + "-" + y.toString() in this.donex) return;
+    // this.donex.push(x);
+    // this.doney.push(y);
+    this.donex.push(x.toString() + "-" + y.toString())
+    // if(x in this.done) return;
+    // this.done.push({x: y});
+    this.picked = true;
+    // this.questionnow = {}
+    console.log(this.topics[x], this.levels[y], this.questions[x][this.levels[y]])
+    this.db.collection("Topics").doc(this.topics[x]).collection(this.levels[y]).doc(this.questions[x][this.levels[y]]).snapshotChanges().subscribe(res => {
+      // console.log(res.payload.data());
+      this.questionnow = res;
+      console.log(this.questionnow.payload.data())
+      if (this.optionsnow.length == 4) return
+      this.optionsnow.push(res.payload.data().o1, res.payload.data().o2, res.payload.data().o3, res.payload.data().o4)
+      // console.log(this.questionnow.doc.data())
     })
   }
 
@@ -164,9 +191,28 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     })
   }
 
+  check(x) {
+    this.picked = false;
+    console.log(this.questionnow)
+    console.log(x.toString(), this.questionnow.payload.data().Answer, this.questionnow.payload.data().Answer.split("o")[1])
+    var increment;
+    if (x.toString() == (this.questionnow.payload.data().Answer).split("o")[1]) {
+      console.log("correct");
+      increment = firebase.firestore.FieldValue.increment(this.cury * 200);
+    }
+    else {
+      increment = firebase.firestore.FieldValue.increment(-1 * this.cury * 10);
+    }
+    this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").doc(localStorage.getItem("name")).update({ "Score": increment })
+    this.questionnow = {};
+    this.optionsnow = [];
+    this.answer();
+
+  }
+
   @HostListener('window:beforeunload', ['$event'])
   beforeunloadHandler(event) {
-    this.endsession();
+    // this.endsession();
   }
 
   popup: boolean = true;
