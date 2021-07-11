@@ -9,6 +9,8 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { BoardComponent } from './board/board.component';
 import { BallsComponent } from './balls/balls.component';
+import { RoomComponent } from './room/room.component';
+import { MiddleComponent } from './middle/middle.component';
 const routes: Routes = [
   {
     path: "signin",
@@ -34,6 +36,14 @@ const routes: Routes = [
   {
     path:"balls",
     component: BallsComponent
+  },
+  {
+    path:"room",
+    component: RoomComponent
+  },
+  {
+    path:"middle",
+    component: MiddleComponent
   },
   {
     path:"board",
