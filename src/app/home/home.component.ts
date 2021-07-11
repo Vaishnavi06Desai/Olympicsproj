@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   options = ["Oh you seem pretty smart", "I thought you guys must be more advanced"]
 
   convo: boolean = false;
+  tictactoe: boolean = false;
   user: any;
   ngOnInit(): void {
     // console.log($("#try").css("transform"));
