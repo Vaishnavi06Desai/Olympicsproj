@@ -117,6 +117,6 @@ export class HomeComponent implements OnInit {
 
   submit(){
     if(this.formanswer.invalid) return;
-    this.router.navigate([''])
+    this.router.navigate(['/reachedhome'])
   }
 }
