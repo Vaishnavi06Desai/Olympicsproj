@@ -8,8 +8,8 @@
         </div>
         <div class="options">
             <div class="rows" *ngFor = "let x of [1, 2, 3]">
-                <div class="option"*ngFor = "let x of [1, 2, 3]">
-
+                <div class="option"*ngFor = "let y of [1, 2, 3]" (click) = "question(x, y)">
+                    {{x}} {{y}}
                 </div>
             </div>
         </div>
@@ -25,5 +25,9 @@
             Your browser does not support the audio element.
           </audio>-->
           <!-- <h2> Today's contestants are V A and J</h2> -->
+    </div>
+
+    <div class = "question">
+        
     </div>
 </div>

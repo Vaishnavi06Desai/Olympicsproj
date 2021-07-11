@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { WindowService } from './services/window.service';
 import { DragDropModule} from '@angular/cdk/drag-drop';
+import { AngularFirestoreModule } from '@angular/fire/firestore'
 
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { HomeComponent } from './home/home.component';
@@ -27,7 +28,9 @@ import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
 import { RoomComponent } from './room/room.component';
 import { MiddleComponent } from './middle/middle.component';
 import { ReachedComponent } from './reached/reached.component';
+import { CreateroomComponent } from './createroom/createroom.component';
 import { JEOPARDYBOARDComponent } from './jeopardyboard/jeopardyboard.component';
+import { TryComponent } from './try/try.component';
 
 
 @NgModule({
@@ -50,7 +53,9 @@ import { JEOPARDYBOARDComponent } from './jeopardyboard/jeopardyboard.component'
     RoomComponent,
     MiddleComponent,
     ReachedComponent,
-    JEOPARDYBOARDComponent
+    CreateroomComponent,
+    JEOPARDYBOARDComponent,
+    TryComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,9 @@ import { JEOPARDYBOARDComponent } from './jeopardyboard/jeopardyboard.component'
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    DragDropModule
+    DragDropModule,
+    AngularFirestoreModule
+  
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [WindowService],

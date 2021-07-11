@@ -13,7 +13,9 @@ import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
 import { RoomComponent } from './room/room.component';
 import { MiddleComponent } from './middle/middle.component';
 import { ReachedComponent } from './reached/reached.component';
+import { CreateroomComponent } from './createroom/createroom.component';
 import { JEOPARDYBOARDComponent } from './jeopardyboard/jeopardyboard.component';
+import { TryComponent } from './try/try.component';
 const routes: Routes = [
   {
     path: "signin",
@@ -67,6 +69,14 @@ const routes: Routes = [
   {
     path: "glow",
     component: GlowpuzzleComponent
+  },
+  {
+    path: "createroom",
+    component: CreateroomComponent
+  },
+  {
+    path: "try",
+    component: TryComponent
   },
   { path: '', redirectTo: '/signin', pathMatch: 'full' }
 ];
