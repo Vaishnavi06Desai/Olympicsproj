@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+// import { Howl, Howler } from 'Howler';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app'
@@ -10,6 +11,9 @@ import firebase from 'firebase/app'
 })
 export class JEOPARDYBOARDComponent implements OnInit {
 
+
+
+ 
   private ctx: AudioContext;
 
   topics: any;
@@ -29,6 +33,8 @@ export class JEOPARDYBOARDComponent implements OnInit {
     }
     this.getmaxplayersandstatus();
     this.getturn();
+    // if()
+    // this.startmusic();
   }
 
   getmaxplayersandstatus() {
@@ -102,4 +108,15 @@ export class JEOPARDYBOARDComponent implements OnInit {
   }
 
   popup: boolean = true;
+  //  sound:any = new Howl({
+  //   src: ['../../assets/audio/sound.mp3']
+  // });
+  // startmusic(){
+  //   this.sound.play();
+  //   console.log("start")
+  // }
+  // stopmusic(){
+  //   this.sound.pause();
+  //   console.log("stop");
+  // }
 }
