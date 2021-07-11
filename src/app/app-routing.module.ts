@@ -37,7 +37,8 @@ const routes: Routes = [
   },
   {
     path:"board",
-    component: BoardComponent},
+    component: BoardComponent
+  },
   {
     path: "puzzle",
     component: PuzzleComponent
