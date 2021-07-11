@@ -13,6 +13,10 @@ body{
      font-family: Jeofont;
      src: url(./assets/fonts/gyparody.ttf);
  }
+ @font-face {
+    font-family: pretty;
+    src: url(./assets/fonts/pretty.ttf);
+ }
 
 :root {
     --col4: rgb(178, 154, 231);
