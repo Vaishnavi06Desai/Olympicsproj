@@ -5,8 +5,8 @@
         <img src="./../../assets/images/torchesbg.png">
     </div>
     <div class="toys">
-    <img class = "paper" src="./../../assets/images/paper.png">
-    <!-- <img class = "paper" src="./../../assets/images/Questionpapertoys.png"> -->
+    <div class = "paper" (click) = "popup = true"></div>
+    <img *ngIf = "popup" (click) = "popup = false" class = "paper p1" src="./../../assets/images/Questionpapertoys.png">
     <img class = "i0"src="./../../assets/images/toy1.png" cdkDrag>
     <img class = "i1"src="./../../assets/images/toy2.png" cdkDrag>
     <img class = "i2"src="./../../assets/images/toy3.png" cdkDrag>
