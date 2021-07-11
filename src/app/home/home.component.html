@@ -1,9 +1,43 @@
 <div class="main">
     <div class="tablet"><img height="50" src="../../assets/images/tablet.png"></div>
     <div class="tictacblet"><img height="70" src="../../assets/images/TicTacblet.png"></div>
+    <div class="tablet" (click) = "cowsandbulls = true"><img height="50" src="../../assets/images/tablet.png"></div>
+    <div class="robot" (click)="toggleconvo()"></div>
+    <div class="roboconvo" *ngIf="convo" style="color: white;">
+        <!-- <div *ngIf = "chosen == -1"> -->
+        <div class="leftconvo">{{conversation[currconvo]}}</div>
+        <div class="rightconvo" *ngIf="!isconvooptions()" (click)="nextcon()">{{conversationyou[currconvo]}}</div>
+        <div class="rightconvo" *ngIf="isconvooptions()">
+            <div *ngFor="let o of options; let i = index" (click)="pickoption(i)">{{o}}</div>
+        </div>
+        <!-- </div> -->
 
-    <div style = "font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 200%; cursor: pointer; position: absolute; top: 10vh; right: 10vh; color: white;" (click) = "logout()">Logout</div>
-    <div style = "font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 200%; cursor: pointer; position: absolute; top: 10vh; left: 10vh; color: white;" (click) = "logout()">Hello, user id {{user.uid}}</div>
+    </div>
+
+    <form [formGroup]="formanswer" class="forminp">
+        <div *ngFor="let x of ['puzzle1', 'puzzle2', 'puzzle3', 'puzzle4', 'puzzle5', 'puzzle6']" class="form">
+        
+            <input placeholder="Enter answer for puzzle {{x}}" formControlName={{x}} type="text" class="ip">
+            <div *ngIf="formcont(x).invalid && (formcont(x).dirty || formcont(x).touched)"
+                class="alert alert-danger ip">
+                <div *ngIf="formcont(x).errors?.required">
+                    {{x}} answer is required.
+                </div>
+                <div *ngIf="formcont(x).errors?.pattern">
+                    Incorrect Answer
+                </div>
+            </div>
+        </div>
+        <div class="custbutton ip">Submit</div>
+    </form>
+    <app-puzzle *ngIf = "cowsandbulls" style="position: absolute; top: 20vh; left: 20vw;"></app-puzzle>
+    <div *ngIf = "cowsandbulls" style="position: absolute; top: 20vh; left: 79vw; font-size: 130%; cursor: pointer;" (click) = "cowsandbulls = false" class = "candbcross">X</div>
+    
+    <div class = "arrow down"></div>
+    <div class = "arrow left"></div>
+    <div class = "arrow right"></div>
+    <!-- <div style = "font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 200%; cursor: pointer; position: absolute; top: 10vh; right: 10vh; color: white;" (click) = "logout()">Logout</div>
+    <div style = "font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 200%; cursor: pointer; position: absolute; top: 10vh; left: 10vh; color: white;" (click) = "logout()">Hello, user id {{user.uid}}</div> -->
     <!-- <div class = "line">
         <img src="../../assets/images/line.png" height="340">
     </div>
@@ -13,5 +47,5 @@
     <div class="triangle">
         <img src="../../assets/images/triangle.png">
     </div> -->
-   
+
 </div>

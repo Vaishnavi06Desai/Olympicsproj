@@ -9,6 +9,7 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { BoardComponent } from './board/board.component';
 import { BallsComponent } from './balls/balls.component';
+import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
 import { RoomComponent } from './room/room.component';
 import { MiddleComponent } from './middle/middle.component';
 const routes: Routes = [
@@ -47,10 +48,15 @@ const routes: Routes = [
   },
   {
     path:"board",
-    component: BoardComponent},
+    component: BoardComponent
+  },
   {
     path: "puzzle",
     component: PuzzleComponent
+  },
+  {
+    path: "glow",
+    component: GlowpuzzleComponent
   },
   { path: '', redirectTo: '/signin', pathMatch: 'full' }
 ];

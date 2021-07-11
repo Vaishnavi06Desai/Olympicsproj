@@ -23,6 +23,7 @@ import { TorchComponent } from './torch/torch.component';
 import { BoardComponent } from './board/board.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
 import { BallsComponent } from './balls/balls.component';
+import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
 import { RoomComponent } from './room/room.component';
 import { MiddleComponent } from './middle/middle.component';
 
@@ -32,6 +33,8 @@ import { MiddleComponent } from './middle/middle.component';
     AppComponent,
     SigninComponent,
     HomeComponent,
+    PuzzleComponent,
+    NonogramComponent,
     PlantComponent,
     TorchComponent,
 
@@ -41,6 +44,7 @@ import { MiddleComponent } from './middle/middle.component';
     PuzzleComponent,
     NonogramComponent,
     BallsComponent,
+    GlowpuzzleComponent,
     RoomComponent,
     MiddleComponent
   ],
