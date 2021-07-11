@@ -5,8 +5,9 @@ main{
     display: flex;
   justify-content: center;
 }
-.custbutton{
-    margin: 3vw 3vh 3vw 3vh;
+.custbutton{float:none;
+display: flex;
+margin-left: auto; margin-right: auto;
     align-self: center;
     width:50vw;
     background: rgba( 144, 19, 254, 0.25 );
@@ -15,7 +16,7 @@ main{
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 10px;
     border: 1px solid #ffffff2e; 
-    
+    justify-content: center;
 }
 .custbutton:hover {
     color: rgba(255, 255, 255, 1);
@@ -31,7 +32,7 @@ input{
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
-    
+    margin-left: auto; margin-right: auto;
     font-size: 18px;
     
     outline: 0.5;
