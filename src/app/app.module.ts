@@ -26,6 +26,7 @@ import { BallsComponent } from './balls/balls.component';
 import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
 import { RoomComponent } from './room/room.component';
 import { MiddleComponent } from './middle/middle.component';
+import { ReachedComponent } from './reached/reached.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MiddleComponent } from './middle/middle.component';
     BallsComponent,
     GlowpuzzleComponent,
     RoomComponent,
-    MiddleComponent
+    MiddleComponent,
+    ReachedComponent
   ],
   imports: [
     BrowserModule,
