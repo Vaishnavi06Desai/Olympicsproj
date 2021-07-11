@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JEOPARDYBOARDComponent implements OnInit {
 
+  private ctx:AudioContext;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-  popup: boolean = false;
+  
+  popup: boolean = true;
 }
