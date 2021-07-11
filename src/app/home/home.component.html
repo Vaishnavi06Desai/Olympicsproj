@@ -33,9 +33,10 @@
     <app-puzzle *ngIf = "cowsandbulls" style="position: absolute; top: 20vh; left: 20vw;"></app-puzzle>
     <div *ngIf = "cowsandbulls" style="position: absolute; top: 20vh; left: 79vw; font-size: 130%; cursor: pointer;" (click) = "cowsandbulls = false" class = "candbcross">X</div>
     
-    <div class = "arrow down"></div>
-    <div class = "arrow left"></div>
-    <div class = "arrow right"></div>
+    <a href="https://vr.jv20201.repl.co/"class = "arrow down"></a>
+    <div routerLink="/plant" class = "arrow left"></div>
+    <div routerLink ="/balls"class = "arrow right"></div>
+    <div routerLink="/torch" class = "arrow door"></div>
     <!-- <div style = "font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 200%; cursor: pointer; position: absolute; top: 10vh; right: 10vh; color: white;" (click) = "logout()">Logout</div>
     <div style = "font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 200%; cursor: pointer; position: absolute; top: 10vh; left: 10vh; color: white;" (click) = "logout()">Hello, user id {{user.uid}}</div> -->
     <!-- <div class = "line">
