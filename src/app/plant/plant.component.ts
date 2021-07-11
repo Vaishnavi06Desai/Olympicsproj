@@ -13,4 +13,7 @@ export class PlantComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  clicked(){
+    console.log("Hiii")
+  }
 }

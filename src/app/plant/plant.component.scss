@@ -8,6 +8,15 @@
 
 
 }
+.inst{
+  // height:50px;
+  // top: 20vh;
+  // left: 67vw;
+  position: absolute;
+  top:15%;
+  left:30%;
+  color:white;
+}
 .left{
     max-height:100vh;
     max-width:100vw;
@@ -54,3 +63,19 @@ button{
   :not(:defined) > * {
     display: none;
   }
+  
+  .code{
+    // height:50px;
+    // top: 20vh;
+    // left: 67vw;
+    position: absolute;
+    top:78%;
+    left:19%;
+    color:white;
+}
+// .tablet img{
+//     position:absolute;
+//     top: 20vh;
+//     left: 67vw;
+//     // margin-bottom: 100%;
+// }

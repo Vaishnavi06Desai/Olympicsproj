@@ -6,6 +6,7 @@
   padding: 0;
   margin: 0;
   background-color:rgba(0,0,0,1.00);
+  background-size: 100% 100%;
 	color:rgba(255,255,255,1.00);
   overflow: hidden;
 }
@@ -39,8 +40,26 @@
   box-shadow: inset 0 0 150px 250px #000 !important;
 }
 
-.pogi {
+.cent{
   position: absolute;
   top: 40%;
   left: 45%;
+}
+.downleft{
+  position: absolute;
+  top:80%;
+}
+.upright{
+  position: absolute;
+  left:80%;
+}
+.downcent{
+  position: absolute;
+  top:80%;
+  left:40%;
+}
+.bottomright{
+  position: absolute;
+  top:40%;
+  left:80%;
 }
