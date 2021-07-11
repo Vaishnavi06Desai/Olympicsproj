@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Howl,Howler } from 'Howler';
+// import { Howl,Howler } from 'Howler';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
@@ -25,7 +25,7 @@ export class JEOPARDYBOARDComponent implements OnInit {
 
   ngOnInit(): void {
     // if()
-    this.startmusic();
+    // this.startmusic();
   }
 
   getmaxplayers() {
@@ -86,15 +86,15 @@ export class JEOPARDYBOARDComponent implements OnInit {
   }
 
   popup: boolean = true;
-   sound:any = new Howl({
-    src: ['../../assets/audio/sound.mp3']
-  });
-  startmusic(){
-    this.sound.play();
-    console.log("start")
-  }
-  stopmusic(){
-    this.sound.pause();
-    console.log("stop");
-  }
+  //  sound:any = new Howl({
+  //   src: ['../../assets/audio/sound.mp3']
+  // });
+  // startmusic(){
+  //   this.sound.play();
+  //   console.log("start")
+  // }
+  // stopmusic(){
+  //   this.sound.pause();
+  //   console.log("stop");
+  // }
 }
