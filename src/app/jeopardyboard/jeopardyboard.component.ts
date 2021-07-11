@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
+import firebase from 'firebase/app'
 
 @Component({
   selector: 'app-jeopardyboard',
@@ -14,23 +16,37 @@ export class JEOPARDYBOARDComponent implements OnInit {
   maxplayer: any;
   currentquestion: any;
   ismyquestion: boolean = false;
+  status: boolean = false;
   levels = { 1: "Easy", 2: "Medium", 3: "Difficult" }
-  done = []
-  questions = []
-  constructor(private db: AngularFirestore) { }
+  done = [];
+  questions = [];
+  noofplayers = 0;
+  constructor(private db: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
-    // if()
+    if(!localStorage.getItem("code")){
+      this.router.navigate(["/createroom"]);
+    }
+    this.getmaxplayersandstatus();
+    this.getturn();
   }
 
-  getmaxplayers() {
+  getmaxplayersandstatus() {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe((res: any) => {
       this.maxplayer = res.payload.data().maxplayers;
+      this.status = res.payload.data().status;
+    })
+  }
+
+  getnumberofplayers(){
+    this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").snapshotChanges().subscribe((res: any) => {
+      this.noofplayers = res.length;
     })
   }
 
   getturn() {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe((res: any) => {
+      console.log(res.payload.data())
       if (res.payload.data().Turn % Number(this.maxplayer) == Number(localStorage.getItem("player"))) this.ismyquestion = true;
       else this.ismyquestion = false;
     })
@@ -68,6 +84,10 @@ export class JEOPARDYBOARDComponent implements OnInit {
     }
 
   }
+
+  startgame(){
+    this.db.collection("Rooms").doc(localStorage.getItem("code")).update({status: true});
+  }
   question(x, y) {
     this.db.collection("Topics").doc(this.topics[x]).collection(this.levels[y]).snapshotChanges().subscribe(res => {
       var rand = Math.trunc(Math.random() * (res.length));
@@ -77,7 +97,8 @@ export class JEOPARDYBOARDComponent implements OnInit {
   }
 
   answer() {
-
+    var increment = firebase.firestore.FieldValue.increment(1);
+    this.db.collection("Rooms").doc(localStorage.getItem("code")).update({Turn: increment});
   }
 
   popup: boolean = true;

@@ -28,6 +28,12 @@
     </div>
 
     <div class = "question">
-        
+
     </div>
+
+    <div class = "disabled" *ngIf = "!status || !ismyquestion">
+
+    </div>
+    <div class = "custbutton" style = "position: absolute; top: 2vh; right: 2vw" *ngIf = "!status && noofplayers == maxplayer" (click) = "startgame()">Start Game</div>
+    <div class = "custbutton" style = "position: absolute; top: 2vh; right: 2vw" *ngIf = "status" (click) = "answer()">Answer</div>
 </div>

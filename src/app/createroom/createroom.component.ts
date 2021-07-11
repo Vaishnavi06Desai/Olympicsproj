@@ -40,7 +40,7 @@ export class CreateroomComponent implements OnInit {
   }
 
   createroom() {
-    this.db.collection("Rooms").add({ "players": 4, "status": "Not Started", "Turn": 0 }).then((res: any) => {
+    this.db.collection("Rooms").add({ "players": 4, "status": false, "Turn": 0 }).then((res: any) => {
       // console.log(res);
       localStorage.setItem('code', res.id);
       localStorage.setItem('name', this.name.get("nameuser").value);
