@@ -12,6 +12,7 @@ import { BallsComponent } from './balls/balls.component';
 import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
 import { RoomComponent } from './room/room.component';
 import { MiddleComponent } from './middle/middle.component';
+import { ReachedComponent } from './reached/reached.component';
 const routes: Routes = [
   {
     path: "signin",
@@ -53,6 +54,10 @@ const routes: Routes = [
   {
     path: "puzzle",
     component: PuzzleComponent
+  },
+  {
+    path: "reachedhome",
+    component: ReachedComponent
   },
   {
     path: "glow",
