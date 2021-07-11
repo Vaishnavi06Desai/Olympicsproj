@@ -1,18 +1,20 @@
 
-<h1>Current Player: {{ player }} </h1>
+<div class="bg">
+<h1 class="center">Tic Tac Toe </h1>
 
-<button nbButton outline status="danger" (click)="newGame()">Start new Game</button>
+<button class="center" nbButton outline status="danger" (click)="newGame()">Start new Game</button>
 
 
-<h2 *ngIf="winner">
+<h2 *ngIf="winner" class="center">
     Player {{ winner }} won the game!
 </h2>
 
-
+<div class="center" style="margin:10vh">
 <main><app-nonogram
         *ngFor="let val of squares; let i = index" 
         [value]="val"
         (click)="makeMove(i)"> 
 
 </app-nonogram>
-</main>
+</main></div>
+</div>
