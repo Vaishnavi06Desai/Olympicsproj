@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Howl,Howler } from 'Howler';
 @Component({
   selector: 'app-jeopardyboard',
   templateUrl: './jeopardyboard.component.html',
@@ -7,12 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JEOPARDYBOARDComponent implements OnInit {
 
-  private ctx:AudioContext;
-
   constructor() { }
 
   ngOnInit(): void {
+    this.startmusic();
   }
-  
   popup: boolean = true;
+   sound:any = new Howl({
+    src: ['../../assets/audio/sound.mp3']
+  });
+  startmusic(){
+    this.sound.play();
+    console.log("start")
+  }
+  stopmusic(){
+    this.sound.pause();
+    console.log("stop");
+  }
 }
