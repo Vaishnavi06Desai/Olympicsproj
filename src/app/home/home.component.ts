@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,6 +25,19 @@ export class HomeComponent implements OnInit {
   convo: boolean = false;
   user: any;
   ngOnInit(): void {
+    // console.log($("#try").css("transform"));
+    // let tr = $("#try").css("transform");
+    // let values = tr.split('(')[1];
+    // values = values.split(')')[0];
+    // var values2 = values.split(',');
+
+    // var a = values2[0]; // 0.866025
+    // var b = values2[1]; // 0.5
+    // var c = values2[2]; // -0.5
+    // var d = values2[3];
+    // console.log(b)
+    // var angle = Math.round(Math.asin(Number(b)) * (180 / Math.PI));
+    // console.log(angle);
     // this.as.getUserState().subscribe(user => {if(user) this.user = user; else this.router.navigate(['/signin'])})
   }
 
@@ -35,15 +50,15 @@ export class HomeComponent implements OnInit {
     puzzle6: new FormControl('', [Validators.required, Validators.pattern('')]),
   })
 
-  returnformname(i){
+  returnformname(i) {
     return "puzzle" + i.toString();
   }
 
   formcont(name: string) { return this.formanswer.get(name)!; }
 
-  toggleconvo(){
+  toggleconvo() {
     this.convo = !this.convo;
-    if(this.convo == false) this.resetrobo();
+    if (this.convo == false) this.resetrobo();
   }
   nextcon() {
     this.currconvo += 1;
@@ -59,7 +74,7 @@ export class HomeComponent implements OnInit {
     return false;
   }
 
-  resetrobo(){
+  resetrobo() {
     this.isoverbool = true;
     this.currconvo = 0;
     this.convo = false;
@@ -69,10 +84,10 @@ export class HomeComponent implements OnInit {
     this.conversationyou = ["next", "next", "next", "hello, where am i?", "What are you?"]
   }
   isover() {
-    if (this.chosen == -1) {this.isoverbool = false; return};
+    if (this.chosen == -1) { this.isoverbool = false; return };
     // if (!(this.chosen == 0 && this.currconvo == 4)) return false;
-    if (this.chosen == 0) if (this.currconvo < 4) {this.isoverbool = false; return};
-    if (this.chosen == 1) if (this.currconvo < 3) {this.isoverbool = false; return};
+    if (this.chosen == 0) if (this.currconvo < 4) { this.isoverbool = false; return };
+    if (this.chosen == 1) if (this.currconvo < 3) { this.isoverbool = false; return };
     // if (!(this.chosen == 1 && this.currconvo == 3)) return false;
     this.resetrobo();
     console.log(this.convo);
@@ -95,6 +110,6 @@ export class HomeComponent implements OnInit {
       this.conversation = ["...", "One way is to land ofcourse.", "*sarcastically* Im sorry, im not that advanced."]
       this.conversationyou = ["how do i get out of here?", "Do you know the way out of this portal?", "End"]
     }
-    
+
   }
 }

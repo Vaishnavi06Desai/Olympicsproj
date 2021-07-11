@@ -9,6 +9,7 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { BoardComponent } from './board/board.component';
 import { BallsComponent } from './balls/balls.component';
+import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
 const routes: Routes = [
   {
     path: "signin",
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: "puzzle",
     component: PuzzleComponent
+  },
+  {
+    path: "glow",
+    component: GlowpuzzleComponent
   },
   { path: '', redirectTo: '/signin', pathMatch: 'full' }
 ];
