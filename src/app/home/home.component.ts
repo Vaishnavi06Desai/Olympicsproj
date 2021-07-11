@@ -47,9 +47,9 @@ export class HomeComponent implements OnInit {
     puzzle2: new FormControl('', [Validators.required, Validators.pattern('5340')]),
     puzzle3: new FormControl('', [Validators.required, Validators.pattern('C')]),
     puzzle4: new FormControl('', [Validators.required, Validators.pattern('green')]),
-    puzzle5: new FormControl('', [Validators.required, Validators.pattern('5614251')]),
+    puzzle5: new FormControl('', [Validators.required, Validators.pattern('hFdtRqq12')]),
     puzzle6: new FormControl('', [Validators.required, Validators.pattern('VAJ')]),
-    puzzle7: new FormControl('', [Validators.required, Validators.pattern('hFdtRqq12')]),
+    puzzle7: new FormControl('', [Validators.required, Validators.pattern('5614251')]),
   })
 
   returnformname(i) {
