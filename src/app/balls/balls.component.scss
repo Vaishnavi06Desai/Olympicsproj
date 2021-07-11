@@ -1,0 +1,104 @@
+.main{
+    height:100vh;
+    max-width:100vw;
+    background-color: brown;
+}
+.bg h1{
+    position: absolute;
+    top:10%;
+    left:30%;
+    font-family: 'Alien';
+    height: 45%;
+}
+.bg img{
+    height:100vh;
+    width:100%;
+    position: absolute;
+}
+.toys img{
+    position:absolute;
+    height: 20%;
+    // margin-top: 30%;
+    // left: 20vw;
+}
+.i0{
+    position:absolute;
+    // height: 20%;
+    margin-left:40%;
+    margin-top: 29%;
+}
+.i1{
+    margin-left:10%;
+    top: 20vh;
+    margin-top: 10%;
+}
+.i2{
+    margin-left:5%;
+    margin-top: 15%;
+}
+.i3{
+    margin-left:30%;
+    margin-top: 11%;
+}
+.i4{
+    margin-left:55%;
+    margin-top: 16%;
+}
+.i5{
+    margin-left:80%;
+    margin-top: 29%;
+}
+.i6{
+    margin-left:5%;
+    margin-top: 25%;
+}
+.i7{
+    margin-left:20%;
+    margin-top: 20%;
+}
+.i8{
+    margin-left:66%;
+    margin-top: 23%;
+}
+.i9{
+    margin-left:50%;
+    margin-top: 27%;
+}
+.i10{
+    margin-left:88%;
+    margin-top: 20%;
+}
+.i11{
+    margin-left:19%;
+    margin-top: 30%;
+}
+    #div1 {
+    width: 350px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+  }
+  .paper{
+    position:absolute;
+    height: 15%;
+    width: 5%;
+    margin-top: 30%;
+    margin-left:40%;
+    cursor: pointer;
+    background-image: url(../../assets/images/paper.png);
+    background-size: 100% 100%;
+
+  }
+
+  .paper:hover{
+      border: solid black thin;
+  }
+
+  .p1{
+    top:8vw;
+      margin-top: 23vh;
+      margin-left: 50vw;
+      transform: scale(6);
+      transition: 4s 2s ease-in-out;
+      z-index: 10;
+  }

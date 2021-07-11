@@ -1,20 +1,19 @@
-
 <div class="bg">
-<h1 class="center">Tic Tac Toe </h1>
+    <h1 class="center">Tic Tac Toe Puzzle 5</h1>
 
-<button class="center" nbButton outline status="danger" (click)="newGame()">Start new Game</button>
+    <button class="center" nbButton outline status="danger" (click)="newGame()">Start new Game</button>
 
 
-<h2 *ngIf="winner" class="center">
-    Player {{ winner }} won the game!
-</h2>
+    <h2 *ngIf="winner" class="center">
+        <div *ngIf = "winner == 'X'">Code is hFdtRqq12</div>
+        <div *ngIf = "winner == 'O'">Try again!</div>
+    </h2>
 
-<div class="center" style="margin:10vh">
-<main><app-nonogram
-        *ngFor="let val of squares; let i = index" 
-        [value]="val"
-        (click)="makeMove(i)"> 
+    <div class="center" style="margin:10vh">
+        <main>
+            <app-nonogram *ngFor="let val of squares; let i = index" [value]="val" (click)="makeMove(i)">
 
-</app-nonogram>
-</main></div>
+            </app-nonogram>
+        </main>
+    </div>
 </div>

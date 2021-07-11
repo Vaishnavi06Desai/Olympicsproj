@@ -9,6 +9,11 @@ import { PuzzleComponent } from './puzzle/puzzle.component';
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { BoardComponent } from './board/board.component';
 import { BallsComponent } from './balls/balls.component';
+import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
+import { RoomComponent } from './room/room.component';
+import { MiddleComponent } from './middle/middle.component';
+import { ReachedComponent } from './reached/reached.component';
+import { JEOPARDYBOARDComponent } from './jeopardyboard/jeopardyboard.component';
 const routes: Routes = [
   {
     path: "signin",
@@ -36,11 +41,32 @@ const routes: Routes = [
     component: BallsComponent
   },
   {
+    path:"room",
+    component: RoomComponent
+  },
+  {
+    path:"middle",
+    component: MiddleComponent
+  },
+  {
     path:"board",
-    component: BoardComponent},
+    component: BoardComponent
+  },
   {
     path: "puzzle",
     component: PuzzleComponent
+  },
+  {
+    path: "jeopardy",
+    component: JEOPARDYBOARDComponent
+  },
+  {
+    path: "reachedhome",
+    component: ReachedComponent
+  },
+  {
+    path: "glow",
+    component: GlowpuzzleComponent
   },
   { path: '', redirectTo: '/signin', pathMatch: 'full' }
 ];

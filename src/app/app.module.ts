@@ -14,6 +14,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { WindowService } from './services/window.service';
+import { DragDropModule} from '@angular/cdk/drag-drop';
 
 import { NonogramComponent } from './nonogram/nonogram.component';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +23,11 @@ import { TorchComponent } from './torch/torch.component';
 import { BoardComponent } from './board/board.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
 import { BallsComponent } from './balls/balls.component';
+import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
+import { RoomComponent } from './room/room.component';
+import { MiddleComponent } from './middle/middle.component';
+import { ReachedComponent } from './reached/reached.component';
+import { JEOPARDYBOARDComponent } from './jeopardyboard/jeopardyboard.component';
 
 
 @NgModule({
@@ -29,6 +35,8 @@ import { BallsComponent } from './balls/balls.component';
     AppComponent,
     SigninComponent,
     HomeComponent,
+    PuzzleComponent,
+    NonogramComponent,
     PlantComponent,
     TorchComponent,
 
@@ -37,7 +45,12 @@ import { BallsComponent } from './balls/balls.component';
 
     PuzzleComponent,
     NonogramComponent,
-    BallsComponent
+    BallsComponent,
+    GlowpuzzleComponent,
+    RoomComponent,
+    MiddleComponent,
+    ReachedComponent,
+    JEOPARDYBOARDComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +58,8 @@ import { BallsComponent } from './balls/balls.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    DragDropModule
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [WindowService],

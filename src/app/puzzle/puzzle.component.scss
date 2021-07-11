@@ -1,0 +1,84 @@
+.main {
+    height: 70vh;
+    width: 60vw;
+    background-color: rgba(0, 0, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // opacity: 0.5;
+    background-image: linear-gradient(
+        to right top,
+        #d16ba58a,
+        #c777b98a,
+        #ba83ca8a,
+        #aa8fd88a,
+        #9a9ae18a,
+        #8aa7ec8a,
+        #79b3f48a,
+        #69bff88a,
+        #52cffe8a,
+        #41dfff8a,
+        #46eefa8a,
+        #5ffbf18a
+    );
+}
+
+.card {
+    height: 50vh;
+    width: 20vw;
+    background-color: grey;
+    background: rgba( 189, 16, 224, 0.25 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    // display: flex;
+}
+
+.panel {
+    display: flex;
+    justify-content: space-evenly;
+}
+.color {
+    height: 5vh;
+    width: 5vh;
+    background-color: silver;
+    border-radius: 50%;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.pink {
+    background-color: pink;
+}
+
+.colpan {
+    cursor: pointer;
+}
+
+.candb {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 150%;
+    color: white;
+    text-align: center;
+}
+

@@ -12,6 +12,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.11",
+    "@angular/cdk": "^12.1.1",
     "@angular/common": "~11.2.11",
     "@angular/compiler": "~11.2.11",
     "@angular/core": "~11.2.11",
@@ -20,8 +21,8 @@
     "@angular/platform-browser": "~11.2.11",
     "@angular/platform-browser-dynamic": "~11.2.11",
     "@angular/router": "~11.2.11",
-    "@google/model-viewer": "^1.7.2",
     "@types/jquery": "^3.5.6",
+    "@google/model-viewer": "^1.7.2",
     "aframe": "^1.2.0",
     "aframe-event-set-component": "^5.0.0",
     "firebase": "^8.7.1",
