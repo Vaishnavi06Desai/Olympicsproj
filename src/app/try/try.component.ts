@@ -41,7 +41,7 @@ export class TryComponent implements OnInit {
   }
 
   submit() {
-    this.db.collection("Topics").doc(this.form.get("name").value).collection("level").add(this.form2.value);
+    this.db.collection("Topics").doc(this.form.get("name").value).collection(this.form.get("level").value).add(this.form2.value);
   }
 
 }
