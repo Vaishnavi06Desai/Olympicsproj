@@ -29,6 +29,7 @@ import { RoomComponent } from './room/room.component';
 import { MiddleComponent } from './middle/middle.component';
 import { ReachedComponent } from './reached/reached.component';
 import { CreateroomComponent } from './createroom/createroom.component';
+import { JEOPARDYBOARDComponent } from './jeopardyboard/jeopardyboard.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { CreateroomComponent } from './createroom/createroom.component';
     RoomComponent,
     MiddleComponent,
     ReachedComponent,
-    CreateroomComponent
+    CreateroomComponent,
+    JEOPARDYBOARDComponent
   ],
   imports: [
     BrowserModule,

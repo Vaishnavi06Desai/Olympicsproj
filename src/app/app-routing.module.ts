@@ -14,6 +14,7 @@ import { RoomComponent } from './room/room.component';
 import { MiddleComponent } from './middle/middle.component';
 import { ReachedComponent } from './reached/reached.component';
 import { CreateroomComponent } from './createroom/createroom.component';
+import { JEOPARDYBOARDComponent } from './jeopardyboard/jeopardyboard.component';
 const routes: Routes = [
   {
     path: "signin",
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: "puzzle",
     component: PuzzleComponent
+  },
+  {
+    path: "jeopardy",
+    component: JEOPARDYBOARDComponent
   },
   {
     path: "reachedhome",

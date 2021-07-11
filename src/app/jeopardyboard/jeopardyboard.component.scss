@@ -1,0 +1,78 @@
+.main{
+    height:100vh;
+    max-width:100vw;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.board{
+    height:80%;
+    width: 80%;
+    background-color: azure;
+    border-radius: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // margin: 10%;
+    
+}
+.loader{
+    position:absolute;
+    height:50vh;
+    width:50vw;
+    background-color: black;
+    border-radius: 5%;
+}
+.title{
+    height:10vh;
+    width:100%;
+    background-color: bisque;
+    border-radius: 10%;
+}
+.topics{
+    height:10vh;
+    width:100%;
+    background-color: rgb(78, 50, 15);
+    border-radius: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.options{
+    height:80vh;
+    width:100%;
+    background-color: rgb(206, 168, 122);
+    border-radius: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.topic{
+    height:100%;
+    width: 16%;
+    background-color:black;
+    border-radius: 10%;
+
+}
+.rows{
+    height:100%;
+    width:16%;
+    background-color:green;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10%;
+}
+.option{
+    width:100%;
+    height:13%;
+    background-color: azure;
+    
+}
