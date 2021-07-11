@@ -11,6 +11,8 @@ export class BallsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  popup: boolean = false;
   // allowDrop(ev:Event) {
   //   ev.preventDefault();
   // }
