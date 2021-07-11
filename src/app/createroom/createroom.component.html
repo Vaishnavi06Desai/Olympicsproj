@@ -1,9 +1,9 @@
 <div class="main">
     <form [formGroup]="name"><input placeholder="Enter your name" formControlName="nameuser">
-       <input placeholder="Enter your players" formControlName="players">
-        <div class="custbutton" (click)="createroom()">Create Room</div>
+       <input style="border:0;outline:0;" placeholder="Enter your players" formControlName="players" class="form-outline form-control">
+        <div class="custbutton btn1" (click)="createroom()">Create Room</div>
 
-        <input placeholder="Enter your name" formControlName="code">
-        <div class="custbutton" (click)="joinroom()">Join a room</div>
+        <input class="form-outline form-control" placeholder="Enter your name" formControlName="code">
+        <div class="custbutton btn1" (click)="joinroom()">Join a room</div>
     </form>
 </div>
