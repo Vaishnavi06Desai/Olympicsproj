@@ -6,7 +6,7 @@ main{
   justify-content: center;
 }
 .custbutton{
-    padding: 10px 10px 10px 10px;
+    margin: 3vw 3vh 3vw 3vh;
     align-self: center;
     width:50vw;
     background: rgba( 144, 19, 254, 0.25 );
@@ -17,14 +17,17 @@ main{
     border: 1px solid #ffffff2e; 
     
 }
-
+.custbutton:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+  }
 input{
     background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
         -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; 
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
-    padding:10px 10px 10px 10px;
+   margin:3vw 3vh 3vw 3vh;
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
