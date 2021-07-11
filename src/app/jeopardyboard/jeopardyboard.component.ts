@@ -13,5 +13,6 @@ export class JEOPARDYBOARDComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   popup: boolean = true;
 }
