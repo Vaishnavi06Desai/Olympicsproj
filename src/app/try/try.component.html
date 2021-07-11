@@ -1,0 +1,20 @@
+<form [formGroup]="form">
+    <input placeholder="Enter your name" formControlName="name">
+    <input placeholder="Enter your level" formControlName="level">
+    
+</form>
+<form [formGroup]="form2">
+    <input placeholder="Enter your Question" formControlName="Question">
+    <input placeholder="Enter your Multiplier" formControlName="Multiplier">
+    <input placeholder="Enter your Answer" formControlName="Answer">
+    <input placeholder="Enter your o1" formControlName="o1">
+    <input placeholder="Enter your o2" formControlName="o2">
+    <input placeholder="Enter your o3" formControlName="o3">
+    <input placeholder="Enter your o4" formControlName="o4">
+</form>
+
+<div class="custbutton" (click)="submit()">Submit</div>
+
+<div *ngFor = "let x of topics" (click) = "clicktopic(x.payload.doc.id)">
+    {{x.payload.doc.data().name}}
+</div>

@@ -23,6 +23,19 @@ export class CreateroomComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    if(localStorage.getItem("code")){
+      this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe(res => {
+        if(res){
+          this.router.navigate(["/jeopardy"], { queryParams: { code: localStorage.getItem("code") } });
+        }
+        else{
+          localStorage.removeItem("code");
+          localStorage.removeItem("name");
+          localStorage.removeItem("player");
+        }
+      })
+
+    }
     this.getpeople();
   }
 
@@ -31,6 +44,7 @@ export class CreateroomComponent implements OnInit {
       // console.log(res);
       localStorage.setItem('code', res.id);
       localStorage.setItem('name', this.name.get("nameuser").value);
+      localStorage.setItem('player', "0");
       this.db.collection("Rooms").doc(res.id).collection("Players").add({ "name": this.name.get("nameuser").value }).then(res => {
         this.router.navigate(["/jeopardy"], { queryParams: { code: res.id } });
       }).catch(e => {
@@ -44,7 +58,7 @@ export class CreateroomComponent implements OnInit {
 
   getpeople() {
     return new Promise((resolve, reject) => {
-      this.db.collection("Rooms").doc("gODTMRZKHUzwvsU9OH6u").collection("Players").get().toPromise().then((res: any) => {
+      this.db.collection("Rooms").doc(this.name.get("code").value).collection("Players").get().toPromise().then((res: any) => {
         var i = 0;
         res.forEach((doc) => {
           i += 1
@@ -56,7 +70,7 @@ export class CreateroomComponent implements OnInit {
             post += 1;
           }
           if (post != 0) this.name.get("nameuser").setValue(this.name.get("nameuser").value + post.toString());
-          
+
         });
         resolve(i);
       })
@@ -64,15 +78,26 @@ export class CreateroomComponent implements OnInit {
 
   }
   joinroom() {
+    
     this.getpeople().then(res => {
-      if(res == 4){
+      if (res == 4) {
         console.log("Full!")
         return
+      }
+      if(res == 1){
+        localStorage.setItem('player', "1");
+      }
+      else if(res == 2){
+        localStorage.setItem('player', "2");
+      }
+      else if(res == 3){
+        localStorage.setItem('player', "3");
       }
       console.log(this.name.get("nameuser").value);
       localStorage.setItem('code', this.name.get("code").value);
       localStorage.setItem('name', this.name.get("nameuser").value);
-      this.db.collection("Rooms").doc(this.name.get("code").value).collection("Players").add({ "name": this.name.get("nameuser").value }).then(res => {
+      this.db.collection("Rooms").doc(this.name.get("code").value).collection("Players").add({ "name": this.name.get("nameuser").value }).then(ress => {
+        
         this.router.navigate(["/jeopardy"], { queryParams: { code: this.name.get("code").value } });
       }).catch(e => {
         console.log(e);
@@ -105,7 +130,7 @@ export class CreateroomComponent implements OnInit {
 
     // })
 
-   
+
     // this.db.collection("Rooms").doc(this.name.get("code").value).snapshotChanges().toPromise().then((res: any) => {
     //   if(res)
 
