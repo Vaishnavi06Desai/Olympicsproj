@@ -12,6 +12,7 @@ export class PuzzleComponent implements OnInit {
   current = -1;
   cowsno = 0;
   bullsno = 0;
+  correctanswer: boolean = false;
   colors = ["red", "green", "blue", "yellow", "pink"]
   answer = [];
   colbuttons = [{"red": false, "green": false, "blue": false, "yellow": false, "pink": false}, {"red": false, "green": false, "blue": false, "yellow": false, "pink": false}, {"red": false, "green": false, "blue": false, "yellow": false, "pink": false}];
@@ -43,7 +44,8 @@ export class PuzzleComponent implements OnInit {
       this.calc();
       this.matched1 = [];
       this.matched2 = [];
-      console.log(this.cowsno, this.bullsno)
+      if(this.bullsno == 3) this.correctanswer = true;
+      // console.log(this.cowsno, this.bullsno)
     }
 
   }

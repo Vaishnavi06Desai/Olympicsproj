@@ -23,6 +23,7 @@ import { TorchComponent } from './torch/torch.component';
 import { BoardComponent } from './board/board.component';
 import { PuzzleComponent } from './puzzle/puzzle.component';
 import { BallsComponent } from './balls/balls.component';
+import { GlowpuzzleComponent } from './glowpuzzle/glowpuzzle.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { BallsComponent } from './balls/balls.component';
 
     PuzzleComponent,
     NonogramComponent,
-    BallsComponent
+    BallsComponent,
+    GlowpuzzleComponent
   ],
   imports: [
     BrowserModule,

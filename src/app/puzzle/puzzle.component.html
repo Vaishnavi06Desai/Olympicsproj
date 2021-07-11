@@ -17,6 +17,27 @@
                 <div class = "color colpan {{i}}" (click) = "fill(i)"></div>
             </div>
         </div>
+
+        <div class = "candb">
+            <div style="width: 100%; display: flex; justify-content: space-evenly;" *ngIf = "!correctanswer">bulls: {{bullsno}} cows: {{cowsno}}</div>
+            <div style="width: 100%; display: flex; justify-content: space-evenly;" *ngIf = "correctanswer">Code is: 5 6 1 4 2 5 1</div>
+           <div style="font-size: 80%;">
+            <br>
+            How to play:
+            <br>
+            <br>
+            The computer has a 3 colour code. Guess the 3 colours to get the answer to puzzle 3.
+            <br>
+            Bulls: The number of colours guessed in the right position.
+            <br>
+            Cows: The number of colours that are there but aren't in the right position.
+            <br>
+            Example: Code: Pink Red Red Your guess: Pink Pink Pink Cows: 0 Bulls: 1
+            <br>
+            Example: Code: Pink Red Red Your guess: Blue Pink Pink Cows: 1 Bulls: 0
+           </div>
+
+        </div>
         
     </div>
 </div>
