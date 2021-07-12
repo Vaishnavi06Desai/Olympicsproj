@@ -39,9 +39,9 @@
           </model-viewer>
           <div class="text">JEOPARDY!</div>
           <h1>This is Jeopardy!</h1>
-         <!-- <audio autoplay="true" preload="auto" src="./../../assets/audio/Jeopardyintro.mp3" type="audio/mpeg">
+         <audio autoplay="true" preload="auto" src="./../../assets/audio/Jeopardyintro.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
-          </audio> -->
+          </audio>
           <!-- <h2> Today's contestants are V A and J</h2> -->
     </div>
     
@@ -65,7 +65,7 @@
     <app-scoreboard *ngIf = "gameend" style="position: absolute; top: 0; left: 0;"></app-scoreboard>
     <div class = "correct">Correct!</div>
     <div class = "custbutton end" (click) = "endgame()" *ngIf = "gameend">End game</div>
-    <div class = "codeshow" *ngIf = "!status" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 100%; flex-basis: 50%; margin-top: 0%; position: absolute; top: 0; left: 0; color: white; font-size: 200%;">Share this CODE: {{getcode()}}</div>
+    <div class = "codeshow" *ngIf = "!status" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 100%; flex-basis: 50%; margin-top: 0%; position: absolute; top: 0; left: 0; color: rgb(135, 138, 194); font-size: 200%;">Share this CODE: {{getcode()}}</div>
     <div *ngIf = "!generated" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 100%; flex-basis: 50%; margin-top: 0%; position: absolute; top: 50vh; left: 40vw; color: white; font-size: 200%;">Generating questions.....</div>
     <div *ngIf = "!status && noofplayers != maxplayer && generated" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 100%; flex-basis: 50%; margin-top: 0%; position: absolute; top: 50vh; left: 40vw; color: white; font-size: 200%;">Waiting for players.....</div>
     <!-- <div class = "custbutton" style = "position: absolute; top: 2vh; right: 2vw" *ngIf = "status" (click) = "answer()">Answer</div> -->
