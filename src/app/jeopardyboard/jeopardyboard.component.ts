@@ -84,9 +84,9 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     })
   }
 
-  getquestion() {
+  // getquestion() {
 
-  }
+  // }
   getquestions() {
     for (let x of [0, 1, 2]) {
       this.db.collection("Topics").doc(this.topics[x]).collection("Easy").snapshotChanges().subscribe(res => {
@@ -147,10 +147,12 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   question(x, y) {
     this.curx = x;
     this.cury = y;
-    if(x.toString() + "-" + y.toString() in this.donex) return;
+    console.log(this.donex, (x*3)+y)
+    if(((x*3)+y) in this.donex) return;
     // this.donex.push(x);
     // this.doney.push(y);
-    this.donex.push(x.toString() + "-" + y.toString())
+    this.donex.push(((x*3)+y))
+    console.log(this.donex)
     // if(x in this.done) return;
     // this.done.push({x: y});
     this.picked = true;
