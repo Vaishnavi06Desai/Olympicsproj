@@ -1,11 +1,39 @@
 <div class="main">
     <form [formGroup]="name">
-        <input placeholder="Enter your name" formControlName="nameuser">
+        <input placeholder="Enter your name" formControlName="nameuser" class="form-outline form-control">
+        <div *ngIf="getnameuser().invalid && (getnameuser().dirty || getnameuser().touched)"
+        class="alert alert-danger">
+            <div *ngIf="getnameuser().errors?.required">
+                Name is required.
+            </div>
+            <div *ngIf="getnameuser().errors?.pattern">
+                Please enter only alphabets
+            </div>
+        </div>
+        <div class="txt">AND</div>
         <input style="border:0;outline:0;" placeholder="Enter number of players" formControlName="players"
             class="form-outline form-control">
+            <div *ngIf="getplayers().invalid && (getplayers().dirty || getplayers().touched)"
+            class="alert alert-danger">
+                <div *ngIf="getplayers().errors?.required">
+                Number of players is required.
+                </div>
+                <div *ngIf="getplayers().errors?.pattern">
+                Please enter only numbers between 1-4
+                </div>
+        </div>
         <div class="custbutton btn1" (click)="createroom()">Create Room</div>
-
+        <div class="txt">OR</div>
         <input class="form-outline form-control" placeholder="Enter code" formControlName="code">
+        <div *ngIf="getcode().invalid && (getcode().dirty || getcode().touched)"
+        class="alert alert-danger">
+            <div *ngIf="getcode().errors?.required">
+                Code is required
+            </div>
+            <div *ngIf="getcode().errors?.pattern">
+                No spaces allowed
+            </div>
+        </div>
         <div class="custbutton btn1" (click)="joinroom()">Join a room</div>
     </form>
 </div>
