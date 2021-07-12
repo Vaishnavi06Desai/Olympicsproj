@@ -3,6 +3,7 @@ import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app'
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-jeopardyboard',
@@ -32,6 +33,8 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   curx;
   cury;
   scores: any;
+  correct: boolean = false;
+  gameend: boolean = false;
   constructor(private db: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
@@ -39,7 +42,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
       this.router.navigate(["/createroom"]);
     }
     this.getmaxplayersandstatus();
-    this.getturn();
+    
     this.getnumberofplayers();
     this.gettopics();
     // this.getquestions();
@@ -58,13 +61,15 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").snapshotChanges().subscribe((res: any) => {
       this.noofplayers = res.length;
       this.scores = res;
+      // console.log(this.scores);
+      this.getturn();
     })
   }
 
   getturn() {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe((res: any) => {
       console.log(res.payload.data())
-      if(res.payload.data().Turn == 18){console.log("End game")}
+      if(res.payload.data().Turn == 9*this.maxplayer){this.gameend = true;} else this.gameend = false;
       if (res.payload.data().Turn % Number(this.maxplayer) == Number(localStorage.getItem("player"))) this.ismyquestion = true;
       else { this.ismyquestion = false; this.picked = false }
     })
@@ -147,8 +152,8 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   question(x, y) {
     this.curx = x;
     this.cury = y;
-    console.log(this.donex, (x*3)+y)
-    if(((x*3)+y) in this.donex) return;
+    console.log(this.donex, (x*3)+y,((x*3)+y) in this.donex )
+    if(this.inarr((x*3)+y)) return;
     // this.donex.push(x);
     // this.doney.push(y);
     this.donex.push(((x*3)+y))
@@ -166,6 +171,13 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
       this.optionsnow.push(res.payload.data().o1, res.payload.data().o2, res.payload.data().o3, res.payload.data().o4)
       // console.log(this.questionnow.doc.data())
     })
+  }
+
+  inarr(elem){
+    for(let x of this.donex){
+      if (elem == x) return true
+    }
+    return false;
   }
 
   answer() {
@@ -200,10 +212,13 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     var increment;
     if (x.toString() == (this.questionnow.payload.data().Answer).split("o")[1]) {
       console.log("correct");
-      increment = firebase.firestore.FieldValue.increment(this.cury * 200);
+      // this.correct = true;
+      $(".correct").css("display", "block")
+      increment = firebase.firestore.FieldValue.increment((this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier));
+      setInterval(function(){ $(".correct").css("display", "none"); clearInterval()}, 3000);
     }
     else {
-      increment = firebase.firestore.FieldValue.increment(-1 * this.cury * 10);
+      increment = firebase.firestore.FieldValue.increment(-1 * (this.cury + 1) * 100);
     }
     this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").doc(localStorage.getItem("name")).update({ "Score": increment })
     this.questionnow = {};
