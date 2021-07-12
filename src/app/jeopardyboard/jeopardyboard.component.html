@@ -31,7 +31,7 @@
        
     </div>
     <div style = "font-size: 200%;" *ngFor = "let x of scores">{{x.payload.doc.data().Score}}</div>
-    <div *ngIf = "popup" class="loader" (click) = "popup = false;">
+    <div *ngIf = "popup" class="loader" (click) = "popup = false;startmusic()">
         <model-viewer  interaction-policy="allow-when-focused" style="margin-left:13%"camera-controls src="./assets/images/jeopardy/scene.gltf" auto-rotate rotation-per-second="70deg">
             <!-- <div style = "z-index: 1000; position: absolute; top: 0; left: 0; height: 10vh; width: 10vw; background-color: aqua;"></div> -->
           </model-viewer>

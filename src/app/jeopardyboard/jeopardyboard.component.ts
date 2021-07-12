@@ -44,7 +44,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   constructor(private db: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
-    this.startmusic();
+   
     if (!localStorage.getItem("code")) {
       this.router.navigate(["/createroom"]);
     }
@@ -276,7 +276,8 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
 
   popup: boolean = true;
    sound:any = new Howl({
-     src: ['../../assets/audio/sound.mp3']
+     src: ['../../assets/audio/sound.mp3'],
+     volume: 0.2
    });
    startmusic(){
      this.sound.play();
