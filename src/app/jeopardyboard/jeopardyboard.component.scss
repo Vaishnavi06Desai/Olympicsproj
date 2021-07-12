@@ -1,12 +1,15 @@
-.main {
-    height: 100vh;
-    max-width: 100vw;
-    // background-color: aquamarine;
+.main{
+    height:100vh;
+    max-width:100vw;
+    background-image:url("./../../assets/images/jeopardybg.jpg");
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 0 0 0;
+
 }
 .board {
     height: 80%;
