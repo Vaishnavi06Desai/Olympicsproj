@@ -45,7 +45,7 @@ export class CreateroomComponent implements OnInit {
   }
 
   createroom() {
-    if (this.name.get('nameuser')!.invalid ||this.name.get('player')!.invalid) {
+    if (this.name.get('nameuser')!.invalid || this.name.get('players')!.invalid) {
       return true;
       
     }
