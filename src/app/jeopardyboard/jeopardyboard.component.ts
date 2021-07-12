@@ -1,5 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
- import { Howl, Howler } from 'Howler';
+import { Howl, Howler } from 'Howler';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app'
@@ -44,7 +44,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   constructor(private db: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
-   
+
     if (!localStorage.getItem("code")) {
       this.router.navigate(["/createroom"]);
     }
@@ -55,13 +55,13 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
           localStorage.removeItem("code");
           localStorage.removeItem("name");
           localStorage.removeItem("player");
-          this.router.navigate(["/createroom"]); 
+          this.router.navigate(["/createroom"]);
         }
       })
 
     }
     this.getmaxplayersandstatus();
-    
+
     this.getnumberofplayers();
     this.gettopics();
     // this.getquestions();
@@ -89,7 +89,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   getturn() {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe((res: any) => {
       // // console.log(res.payload.data())
-      if(res.payload.data().Turn == 9*this.maxplayer){this.gameend = true;} else this.gameend = false;
+      if (res.payload.data().Turn == 9 * this.maxplayer) { this.gameend = true; } else this.gameend = false;
       if (res.payload.data().Turn % Number(this.maxplayer) == Number(localStorage.getItem("player"))) this.ismyquestion = true;
       else { this.ismyquestion = false; this.picked = false }
     })
@@ -166,10 +166,10 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     this.curx = x;
     this.cury = y;
     // console.log(this.donex, (x*3)+y,((x*3)+y) in this.donex )
-    if(this.inarr((x*3)+y)) return;
+    if (this.inarr((x * 3) + y)) return;
     // this.donex.push(x);
     // this.doney.push(y);
-    this.donex.push(((x*3)+y))
+    this.donex.push(((x * 3) + y))
     // console.log(this.donex)
     // if(x in this.done) return;
     // this.done.push({x: y});
@@ -186,8 +186,8 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     })
   }
 
-  inarr(elem){
-    for(let x of this.donex){
+  inarr(elem) {
+    for (let x of this.donex) {
       if (elem == x) return true
     }
     return false;
@@ -208,20 +208,20 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     var name = localStorage.getItem("name");
     var code = localStorage.getItem("code");
     this.db.collection("Rooms").doc(code).collection("Players").doc(name).delete().then(res => {
-      this.db.collection("Rooms").doc(name).collection("Players").snapshotChanges().subscribe((res:any) => {
+      this.db.collection("Rooms").doc(name).collection("Players").snapshotChanges().subscribe((res: any) => {
         // console.log(res.length == 0);
-        
-        if (!res || res == undefined || res.type == "removed" || res.length == 0) { this.db.collection("Rooms").doc(code).delete().then(res => {this.router.navigate(['/createroom'])});}
+
+        if (!res || res == undefined || res.type == "removed" || res.length == 0) { this.db.collection("Rooms").doc(code).delete().then(res => { this.router.navigate(['/createroom']) }); }
         else this.router.navigate(['/createroom'])
       })
     })
     localStorage.removeItem("code");
     localStorage.removeItem("name");
     localStorage.removeItem("player");
-    
+
   }
 
-  getcode(){
+  getcode() {
     return localStorage.getItem("code");
   }
   check(x) {
@@ -231,25 +231,33 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     var increment;
     if (x.toString() == (this.questionnow.payload.data().Answer).split("o")[1]) {
       // console.log("correct");
+      this.stopmusic();
+      var temp = this.sound;
+      this.sound1.play();
+      this.sound1.on('end', function () {
+        console.log('Finished!');
+        temp.play();
+      });
+
       // this.correct = true;
       this.plus = (this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier)
       // $(".correct").css("display", "block");
       $(".ppoints").css("display", "block");
       $("#corrimg").css("display", "block");
-      if(this.questionnow.payload.data().Multiplier >1){$("#mulimg").css("display", "block");}
+      if (this.questionnow.payload.data().Multiplier > 1) { $("#mulimg").css("display", "block"); }
       increment = firebase.firestore.FieldValue.increment((this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier));
-      
+
       // setInterval(function(){ $(".correct").css("display", "none"); clearInterval()}, 3000);
 
-      setInterval(function(){$(".ppoints").css("display", "none"); $("#corrimg").css("display", "none"); $("#mulimg").css("display", "none"); clearInterval();}, 3000);
+      setInterval(function () { $(".ppoints").css("display", "none"); $("#corrimg").css("display", "none"); $("#mulimg").css("display", "none"); clearInterval(); }, 3000);
 
     }
     else {
       increment = firebase.firestore.FieldValue.increment(-1 * (this.cury + 1) * 100);
       this.minus = -1 * (this.cury + 1) * 100;
       $(".npoints").css("display", "block");
-      setInterval(function(){ $(".npoints").css("display", "none"); clearInterval()}, 3000);
-      
+      setInterval(function () { $(".npoints").css("display", "none"); clearInterval() }, 3000);
+
     }
     this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").doc(localStorage.getItem("name")).update({ "Score": increment })
     this.questionnow = {};
@@ -263,21 +271,25 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     this.endsession();
   }
 
-  endgame(){
+  endgame() {
     this.endsession();
   }
 
   popup: boolean = true;
-   sound:any = new Howl({
-     src: ['../../assets/audio/sound.mp3'],
-     volume: 0.2
-   });
-   startmusic(){
-     this.sound.play();
-     console.log("start")
-   }
-   stopmusic(){
-     this.sound.pause();
-     console.log("stop");
-   }
+  sound: any = new Howl({
+    src: ['../../assets/audio/sound.mp3'],
+    volume: 0.2
+  });
+  sound1: any = new Howl({
+    src: ['../../assets/audio/cheer.mp3'],
+    volume: 0.2
+  });
+  startmusic() {
+    this.sound.play();
+    console.log("start")
+  }
+  stopmusic() {
+    this.sound.pause();
+    console.log("stop");
+  }
 }
