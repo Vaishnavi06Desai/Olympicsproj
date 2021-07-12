@@ -1,6 +1,8 @@
 <div class="main">
-    <form [formGroup]="name"><input placeholder="Enter your name" formControlName="nameuser">
-       <input style="border:0;outline:0;" placeholder="Enter number of players" formControlName="players" class="form-outline form-control">
+    <form [formGroup]="name">
+        <input placeholder="Enter your name" formControlName="nameuser">
+        <input style="border:0;outline:0;" placeholder="Enter number of players" formControlName="players"
+            class="form-outline form-control">
         <div class="custbutton btn1" (click)="createroom()">Create Room</div>
 
         <input class="form-outline form-control" placeholder="Enter code" formControlName="code">

@@ -10,6 +10,7 @@
         <div class="title">
             <img class="" src="../../assets/images/jeopardy.png">
             <div>{{gamename}} 's game</div>
+            <div class = "codeshow">CODE: {{getcode()}}</div>
         </div>
         <div class="topics">
             <div class="topic"*ngFor = "let x of topicnames">{{x}}</div>
@@ -56,7 +57,7 @@
     <app-scoreboard *ngIf = "gameend" style="position: absolute; top: 0; left: 0;"></app-scoreboard>
     <div class = "correct">Correct!</div>
     <div class = "custbutton end" (click) = "endgame()" *ngIf = "gameend">End game</div>
-    <div class = "codeshow">{{getcode()}}</div>
+    
     <!-- <div class = "custbutton" style = "position: absolute; top: 2vh; right: 2vw" *ngIf = "status" (click) = "answer()">Answer</div> -->
 </div>
 <!-- *ngIf = "gameend" -->
