@@ -45,6 +45,10 @@ export class CreateroomComponent implements OnInit {
   }
 
   createroom() {
+    if (this.name.get('nameuser')!.invalid ||this.name.get('player')!.invalid) {
+      return true;
+      
+    }
     this.db.collection("Rooms").add({ "maxplayers": Number(this.name.get("players").value), "status": false, "Turn": 0, "createdby":  this.name.get("nameuser").value}).then((res: any) => {
       // console.log(res);
       localStorage.setItem('code', res.id);
@@ -91,6 +95,10 @@ export class CreateroomComponent implements OnInit {
     })
   }
   joinroom() {
+    if (this.name.get('nameuser')!.invalid ||this.name.get('code')!.invalid) {
+      return true;
+      
+    }
 
     this.getpeople().then(res => {
       this.getmaxpl().then(res2 => {
