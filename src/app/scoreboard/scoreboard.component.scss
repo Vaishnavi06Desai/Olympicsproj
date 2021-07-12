@@ -1,5 +1,14 @@
 .scoreboard{
-    background-color: black;
+    // background-color: black;
+    background-image: linear-gradient(to right top, #d16ba54b, #c777b84b, #ba83ca4b, #aa8fd84b, #9a9ae14b, #8aa7ec4b, #79b3f44b, #69bff84b, #52cffe4b, #41dfff4b, #46eefa4b, #5ffbf14b); 
     height: 100vh;
     width: 100vw;
+}
+.title{
+    font-family: pretty;
+    font-weight: 700;
+    font-size: 40px;
+    background: -webkit-linear-gradient(rgb(255, 248, 180), rgb(228, 175, 2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
