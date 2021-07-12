@@ -1,5 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-// import { Howl, Howler } from 'Howler';
+ import { Howl, Howler } from 'Howler';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app'
@@ -44,6 +44,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   constructor(private db: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
+    this.startmusic();
     if (!localStorage.getItem("code")) {
       this.router.navigate(["/createroom"]);
     }
@@ -274,15 +275,15 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   }
 
   popup: boolean = true;
-  //  sound:any = new Howl({
-  //   src: ['../../assets/audio/sound.mp3']
-  // });
-  // startmusic(){
-  //   this.sound.play();
-  //   console.log("start")
-  // }
-  // stopmusic(){
-  //   this.sound.pause();
-  //   console.log("stop");
-  // }
+   sound:any = new Howl({
+     src: ['../../assets/audio/sound.mp3']
+   });
+   startmusic(){
+     this.sound.play();
+     console.log("start")
+   }
+   stopmusic(){
+     this.sound.pause();
+     console.log("stop");
+   }
 }
