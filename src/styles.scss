@@ -17,6 +17,10 @@ body{
     font-family: pretty;
     src: url(./assets/fonts/pretty.ttf);
  }
+ @font-face {
+    font-family: blossom;
+    src: url(./assets/fonts/BunchBlossomsPersonalUse-0nA4.ttf);
+ }
 
 :root {
     --col4: rgb(178, 154, 231);

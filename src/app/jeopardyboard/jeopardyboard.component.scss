@@ -208,7 +208,7 @@ model-viewer {
 }
 
 .question {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(198, 202, 255, 0.685);
     width: 60vw;
     height: 80vh;
     position: absolute;
@@ -220,13 +220,15 @@ model-viewer {
 
 .ques {
     height: 30vh;
-    color: white;
+    color: black;
+    border-radius: 2%;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-size: 200%;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    // font-family: Blossom;
+    // border-radius: 10%;
 }
 
 .ansopt {
@@ -237,12 +239,18 @@ model-viewer {
 }
 
 .option {
+    display:flex;
     flex-basis: 50%;
     margin: 0% 2%;
     width: 20vw;
     height: 10vh;
-    background-color: white;
-    color: black;
+    background-color: rgb(95, 84, 253);
+    color: rgb(206, 219, 255);
+    border-radius: 10%;
+    justify-content: center;
+    align-items: center;
+    // font-family: blossom;
+    
 }
 
 .correct {
@@ -304,4 +312,8 @@ model-viewer {
     z-index: 100;
     font-size: 600%;
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.TheGifs{
+    position: absolute;
 }
