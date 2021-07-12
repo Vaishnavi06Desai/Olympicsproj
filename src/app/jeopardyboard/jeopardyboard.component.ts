@@ -80,14 +80,14 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").snapshotChanges().subscribe((res: any) => {
       this.noofplayers = res.length;
       this.scores = res;
-      console.log("...", this.scores);
+      // console.log("...", this.scores);
       this.getturn();
     })
   }
 
   getturn() {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe((res: any) => {
-      console.log(res.payload.data())
+      // // console.log(res.payload.data())
       if(res.payload.data().Turn == 9*this.maxplayer){this.gameend = true;} else this.gameend = false;
       if (res.payload.data().Turn % Number(this.maxplayer) == Number(localStorage.getItem("player"))) this.ismyquestion = true;
       else { this.ismyquestion = false; this.picked = false }
@@ -101,10 +101,10 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
         var rand = Math.trunc(Math.random() * (res.length));
         this.topics.push(res[rand].payload.doc.id);
         this.topicnames.push(res[rand].payload.doc.data().name)
-        console.log(res)
+        // console.log(res)
         res.splice(rand, 1);
       }
-      console.log(this.topics);
+      // console.log(this.topics);
       this.getquestions();
     })
   }
@@ -120,7 +120,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
         var rand = Math.trunc(Math.random() * (res.length));
         this.questions[x]["Easy"] = (res[rand].payload.doc.id);
         res.slice(rand, 1);
-        console.log(this.questions)
+        // console.log(this.questions)
         // }
 
         this.db.collection("Topics").doc(this.topics[x]).collection("Medium").snapshotChanges().subscribe(res => {
@@ -129,7 +129,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
           var rand = Math.trunc(Math.random() * (res.length));
           this.questions[x]["Medium"] = (res[rand].payload.doc.id);
           res.slice(rand, 1);
-          console.log(this.questions)
+          // console.log(this.questions)
           // }
 
           this.db.collection("Topics").doc(this.topics[x]).collection("Difficult").snapshotChanges().subscribe(res => {
@@ -139,7 +139,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
             this.questions[x]["Difficult"] = (res[rand].payload.doc.id);
             res.slice(rand, 1);
             this.generated = true;
-            console.log(this.questions)
+            // console.log(this.questions)
             // }
 
             // }
@@ -154,17 +154,8 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     }
   }
 
-  // sortarray(){
-  //     for(let x of this.questions){
-  //       var ind = 0;
-  //       for(let i of x){
-
-  //       }
-  //     }
-  // }
-
   bla() {
-    console.log(this.questions);
+    // console.log(this.questions);
   }
 
   startgame() {
@@ -173,24 +164,24 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   question(x, y) {
     this.curx = x;
     this.cury = y;
-    console.log(this.donex, (x*3)+y,((x*3)+y) in this.donex )
+    // console.log(this.donex, (x*3)+y,((x*3)+y) in this.donex )
     if(this.inarr((x*3)+y)) return;
     // this.donex.push(x);
     // this.doney.push(y);
     this.donex.push(((x*3)+y))
-    console.log(this.donex)
+    // console.log(this.donex)
     // if(x in this.done) return;
     // this.done.push({x: y});
     this.picked = true;
     // this.questionnow = {}
-    console.log(this.topics[x], this.levels[y], this.questions[x][this.levels[y]])
+    // console.log(this.topics[x], this.levels[y], this.questions[x][this.levels[y]])
     this.db.collection("Topics").doc(this.topics[x]).collection(this.levels[y]).doc(this.questions[x][this.levels[y]]).snapshotChanges().subscribe(res => {
-      // console.log(res.payload.data());
+      // // console.log(res.payload.data());
       this.questionnow = res;
-      console.log(this.questionnow.payload.data())
+      // console.log(this.questionnow.payload.data())
       if (this.optionsnow.length == 4) return
       this.optionsnow.push(res.payload.data().o1, res.payload.data().o2, res.payload.data().o3, res.payload.data().o4)
-      // console.log(this.questionnow.doc.data())
+      // // console.log(this.questionnow.doc.data())
     })
   }
 
@@ -217,9 +208,9 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     var code = localStorage.getItem("code");
     this.db.collection("Rooms").doc(code).collection("Players").doc(name).delete().then(res => {
       this.db.collection("Rooms").doc(name).collection("Players").snapshotChanges().subscribe((res:any) => {
-        console.log(res.length == 0);
+        // console.log(res.length == 0);
         
-        if (!res || res == undefined || res.type == "removed" || res.length == 0) {console.log("...!!!"); this.db.collection("Rooms").doc(code).delete().then(res => {this.router.navigate(['/createroom'])});}
+        if (!res || res == undefined || res.type == "removed" || res.length == 0) { this.db.collection("Rooms").doc(code).delete().then(res => {this.router.navigate(['/createroom'])});}
         else this.router.navigate(['/createroom'])
       })
     })
@@ -234,20 +225,22 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   }
   check(x) {
     this.picked = false;
-    console.log(this.questionnow)
-    console.log(x.toString(), this.questionnow.payload.data().Answer, this.questionnow.payload.data().Answer.split("o")[1])
+    // console.log(this.questionnow)
+    // console.log(x.toString(), this.questionnow.payload.data().Answer, this.questionnow.payload.data().Answer.split("o")[1])
     var increment;
     if (x.toString() == (this.questionnow.payload.data().Answer).split("o")[1]) {
-      console.log("correct");
+      // console.log("correct");
       // this.correct = true;
       this.plus = (this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier)
       // $(".correct").css("display", "block");
       $(".ppoints").css("display", "block");
+      $("#corrimg").css("display", "block");
+      if(this.questionnow.payload.data().Multiplier >1){$("#mulimg").css("display", "block");}
       increment = firebase.firestore.FieldValue.increment((this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier));
       
       // setInterval(function(){ $(".correct").css("display", "none"); clearInterval()}, 3000);
 
-      setInterval(function(){$(".ppoints").css("display", "none"); clearInterval();}, 3000);
+      setInterval(function(){$(".ppoints").css("display", "none"); $("#corrimg").css("display", "none"); $("#mulimg").css("display", "none"); clearInterval();}, 3000);
 
     }
     else {
@@ -279,7 +272,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   // });
   // startmusic(){
   //   this.sound.play();
-  //   console.log("start")
+  //   // console.log("start")
   // }
   // stopmusic(){
   //   this.sound.pause();
