@@ -1,11 +1,28 @@
 <div class = "scoreboard">
+    <img src="./../../assets/images/hurray5.gif" height="100%">
     <div class="board">
         <div class = "title">
             Scoreboard
         </div>
-        <div *ngFor = "let i of scores" style = "color: wheat;">
-            {{i.name}} {{i.Score}}
+        <div class="scores">
+            <img src="./../../assets/images/winnerhalo.png"height="35%" color="rgba(0,0,0,4b)">
+            
+            <div class="player" *ngFor="let x of [1,2,3,5]" >
+                Place{{x}}
+                name
+                Score 1
+            </div>
+            <!-- <div class="player" >
+                Player:3
+            </div>
+            <div class="player">
+                Player:2
+            </div> -->
+            <!-- <div *ngFor = "let i of scores" style = "color: rgb(19, 18, 18);">
+                {{i.name}} {{i.Score}}
+            </div> -->
         </div>
+        
     </div>
     
 </div>
