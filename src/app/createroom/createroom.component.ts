@@ -1,7 +1,7 @@
 import { ResolvedStaticSymbol } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,9 +14,9 @@ export class CreateroomComponent implements OnInit {
   constructor(private db: AngularFirestore, private router: Router) { }
 
   name = new FormGroup({
-    nameuser: new FormControl(''),
-    code: new FormControl(''),
-    players: new FormControl('')
+    nameuser: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]),
+    code: new FormControl('',  [Validators.required, Validators.pattern(/^\S*$/)]),
+    players: new FormControl('',  [Validators.required, Validators.pattern('[1-4]')])
   })
 
   room = new FormGroup({

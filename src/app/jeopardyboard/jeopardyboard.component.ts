@@ -213,16 +213,20 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     var name = localStorage.getItem("name");
     var code = localStorage.getItem("code");
     this.db.collection("Rooms").doc(code).collection("Players").doc(name).delete().then(res => {
-      console.log(res, "...");
-      this.db.collection("Rooms").doc(name).collection("Players").snapshotChanges().subscribe(res => {
-        if (!res) this.db.collection("Rooms").doc(name).delete();
+      this.db.collection("Rooms").doc(name).collection("Players").snapshotChanges().subscribe((res:any) => {
+        console.log(res.length == 0);
+        if (!res || res == undefined || res.type == "removed" || res.length == 0) {console.log("...!!!"); this.db.collection("Rooms").doc(code).delete().then(res => {console.log("DELETED!")});}
         localStorage.removeItem("code");
         localStorage.removeItem("name");
         localStorage.removeItem("player");
+        this.router.navigate(['/createroom'])
       })
     })
   }
 
+  getcode(){
+    return localStorage.getItem("code");
+  }
   check(x) {
     this.picked = false;
     console.log(this.questionnow)
@@ -238,7 +242,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
       
       // setInterval(function(){ $(".correct").css("display", "none"); clearInterval()}, 3000);
 
-      setInterval(function(){$(".ppoints").css("display", "none"); clearInterval(); console.log("10secspassed")} , 3000);
+      setInterval(function(){$(".ppoints").css("display", "none"); clearInterval();}, 3000);
 
     }
     else {
@@ -257,7 +261,11 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
 
   @HostListener('window:beforeunload', ['$event'])
   beforeunloadHandler(event) {
-    // this.endsession();
+    this.endsession();
+  }
+
+  endgame(){
+    this.endsession();
   }
 
   popup: boolean = true;

@@ -5,12 +5,15 @@
             Scoreboard
         </div>
         <div class="scores">
-            <img src="./../../assets/images/winnerhalo.png"height="35%" color="rgba(0,0,0,4b)">
+            <!-- <img src="./../../assets/images/winnerhalo.png"height="35%" color="rgba(0,0,0,4b)"> -->
             
-            <div class="player" *ngFor="let x of [1,2,3,5]" >
-                Place{{x}}
-                name
-                Score 1
+            <div class="player" *ngFor="let x of scores; let i = index" [ngClass] = "{
+                'first': i == 0,
+                'second': i == 1
+            }">
+                <div style="font-size: 120%;">Place {{i + 1}}</div>
+                <div>Name: {{x.name}}</div>
+                <div>Score: {{x.Score}}</div>
             </div>
             <!-- <div class="player" >
                 Player:3

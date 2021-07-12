@@ -1,6 +1,6 @@
 .scoreboard{
     // background-color: black;
-    background-image: linear-gradient(to right top, #d16ba573, #c777b873, #ba83ca73, #aa8fd873, #9a9ae173, #8aa7ec73, #79b2f473, #69bff873, #52cffe73, #41dfff73, #46eefa73, #5ffbf173); 
+    background-image: linear-gradient(to right top, #d16ba5dd, #c777b8dd, #ba83cadd, #aa8fd8dd, #9a9ae1dd, #8aa7ecdd, #79b2f4dd, #69bff8dd, #52cffedd, #41dfffdd, #46eefadd, #5ffbf1dd); 
     height: 100vh;
     width: 100vw;
     display:flex;
@@ -12,7 +12,7 @@
 .title{
     font-family: pretty;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 500%;
     background: -webkit-linear-gradient(rgb(255, 248, 180), rgb(228, 175, 2));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -21,7 +21,7 @@
     border-radius: 10%;
     height:80%;
     width: 80%;
-    background-color: #46eefa73	;
+    // background-color: #46eefa	;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,13 +41,19 @@
 }
 .player{
     height: 40%;
-    background-color: #5ffbf1;
+    
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 200%;
     z-index: 1;
-
-
+    padding: 2%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #e6c79c;
+    // font-family: pretty;
 }
 .scores img{
     position: absolute;
@@ -63,4 +69,16 @@
     to {
       transform: rotate(359deg);
     }
+  }
+
+  .first{
+    background-color: #bbf0f3;
+    background-color: #ffc857;
+    background-color: #e6c79c;
+    background-image: linear-gradient(315deg, #e6c79c 0%, #d6a3a3 74%);
+  }
+
+  .second{
+    background-color: #f3e6e8;
+    background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
   }
