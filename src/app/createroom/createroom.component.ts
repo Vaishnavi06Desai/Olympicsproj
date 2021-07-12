@@ -23,6 +23,10 @@ export class CreateroomComponent implements OnInit {
     numberofplayers: new FormControl(' ')
   })
 
+  getnameuser() { return this.name.get("nameuser")!; }
+  getcode() { return this.name.get("code")!; }
+  getplayers() { return this.name.get("players")!; }
+  getnoofplayers() { return this.room.get("numberofplayers")!; }
   ngOnInit(): void {
     if (localStorage.getItem("code")) {
       this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe(res => {

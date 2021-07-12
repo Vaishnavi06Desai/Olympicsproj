@@ -9,8 +9,8 @@
     <div class="board">
         <div class="title">
             <img class="" src="../../assets/images/jeopardy.png">
-            <div>{{gamename}} 's game</div>
-            <div class = "codeshow">CODE: {{getcode()}}</div>
+            <div style = "display: flex; width: 100%; justify-content: space-evenly; align-items: center;">{{gamename}} 's game  <div class = "codeshow" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 100%; flex-basis: 50%; margin-top: 0%;">CODE: {{getcode()}}</div></div>
+            
         </div>
         <div class="topics">
             <div class="topic"*ngFor = "let x of topicnames">{{x}}</div>
