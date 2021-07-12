@@ -1,7 +1,9 @@
 <div class="main">
+    <div class = "ppoints">+{{plus}}</div><div class = "npoints">-{{minus}}</div>
     <div class = "players">
         <div class = "player" *ngFor = "let x of scores">
-            {{x.payload.doc.data().name}} : {{x.payload.doc.data().Score}} 
+            <div style="display: flex;">{{x.payload.doc.data().name}} : {{x.payload.doc.data().Score}}</div>
+            
         </div>
     </div>
     <div class="board">
@@ -27,9 +29,9 @@
           </model-viewer>
           <div class="text">JEOPARDY!</div>
           <h1>This is Jeopardy!</h1>
-         <audio autoplay="true" preload="auto" src="./../../assets/audio/Jeopardyintro.mp3" type="audio/mpeg">
+         <!-- <audio autoplay="true" preload="auto" src="./../../assets/audio/Jeopardyintro.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
-          </audio>
+          </audio> -->
           <!-- <h2> Today's contestants are V A and J</h2> -->
     </div>
     
@@ -51,6 +53,6 @@
     <div class = "custbutton" style = "position: absolute; top: 2vh; right: 2vw" *ngIf = "!status && noofplayers == maxplayer" (click) = "startgame()">Start Game</div>
 
     <app-scoreboard *ngIf = "gameend" style="position: absolute; top: 0; left: 0;"></app-scoreboard>
-    <div class = "correct" *ngIf = "correct">Correct!</div>
+    <div class = "correct">Correct!</div>
     <!-- <div class = "custbutton" style = "position: absolute; top: 2vh; right: 2vw" *ngIf = "status" (click) = "answer()">Answer</div> -->
 </div>

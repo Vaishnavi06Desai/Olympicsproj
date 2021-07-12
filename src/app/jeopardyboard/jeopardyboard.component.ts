@@ -35,6 +35,8 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   scores: any;
   correct: boolean = false;
   gameend: boolean = false;
+  plus = 0;
+  minus = 0;
   constructor(private db: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
@@ -213,12 +215,22 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     if (x.toString() == (this.questionnow.payload.data().Answer).split("o")[1]) {
       console.log("correct");
       // this.correct = true;
-      $(".correct").css("display", "block")
+      this.plus = (this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier)
+      $(".correct").css("display", "block");
+      $(".ppoints").css("display", "block");
       increment = firebase.firestore.FieldValue.increment((this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier));
+      
       setInterval(function(){ $(".correct").css("display", "none"); clearInterval()}, 3000);
+
+      setInterval(function(){$(".ppoints").css("display", "none"); clearInterval(); console.log("10secspassed")} , 3000);
+
     }
     else {
       increment = firebase.firestore.FieldValue.increment(-1 * (this.cury + 1) * 100);
+      this.minus = -1 * (this.cury + 1) * 100;
+      $(".npoints").css("display", "block");
+      setInterval(function(){ $(".npoints").css("display", "none"); clearInterval()}, 3000);
+      
     }
     this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").doc(localStorage.getItem("name")).update({ "Score": increment })
     this.questionnow = {};

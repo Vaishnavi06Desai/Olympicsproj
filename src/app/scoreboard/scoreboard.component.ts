@@ -22,13 +22,13 @@ export class ScoreboardComponent implements OnInit {
   getscores(){
     console.log("???")
     this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").snapshotChanges().subscribe((res: any) => {
-      
+      this.scores = [];
       // console.log(res);
       res.forEach(element => {
         this.scores.push({"Score": element.payload.doc.data().Score, "name": element.payload.doc.data().name})
       });
       // this.scores = res.payload.doc.data();
-      console.log("...", this.scores);
+      // console.log("...", this.scores);
       this.scores.sort(function(a,b){return a["Score"] - b["Score"]});
       this.scores.reverse();
       console.log("sorted", this.scores);
