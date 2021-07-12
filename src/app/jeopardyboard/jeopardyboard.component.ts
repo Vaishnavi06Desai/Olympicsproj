@@ -18,6 +18,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   private ctx: AudioContext;
 
   topics: Array<any> = [];
+  topicnames: Array<string> = [];
   maxplayer: any;
   currentquestion: any;
   ismyquestion: boolean = false;
@@ -37,11 +38,24 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   gameend: boolean = false;
   plus = 0;
   minus = 0;
+  gamename = "";
   constructor(private db: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
     if (!localStorage.getItem("code")) {
       this.router.navigate(["/createroom"]);
+    }
+
+    if (localStorage.getItem("code")) {
+      this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe((res: any) => {
+        if (res.type == "removed" || !res) {
+          localStorage.removeItem("code");
+          localStorage.removeItem("name");
+          localStorage.removeItem("player");
+          this.router.navigate(["/createroom"]); 
+        }
+      })
+
     }
     this.getmaxplayersandstatus();
     
@@ -56,6 +70,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).snapshotChanges().subscribe((res: any) => {
       this.maxplayer = res.payload.data().maxplayers;
       this.status = res.payload.data().status;
+      this.gamename = res.payload.data().createdby;
     })
   }
 
@@ -78,11 +93,12 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   }
 
   gettopics() {
-    this.db.collection("Topics").snapshotChanges().subscribe(res => {
+    this.db.collection("Topics").snapshotChanges().subscribe((res: any) => {
       if (this.topics.length == 3) return;
       for (let i of [1, 2, 3]) {
         var rand = Math.trunc(Math.random() * (res.length));
         this.topics.push(res[rand].payload.doc.id);
+        this.topicnames.push(res[rand].payload.doc.data().name)
         console.log(res)
         res.splice(rand, 1);
       }
@@ -216,11 +232,11 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
       console.log("correct");
       // this.correct = true;
       this.plus = (this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier)
-      $(".correct").css("display", "block");
+      // $(".correct").css("display", "block");
       $(".ppoints").css("display", "block");
       increment = firebase.firestore.FieldValue.increment((this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier));
       
-      setInterval(function(){ $(".correct").css("display", "none"); clearInterval()}, 3000);
+      // setInterval(function(){ $(".correct").css("display", "none"); clearInterval()}, 3000);
 
       setInterval(function(){$(".ppoints").css("display", "none"); clearInterval(); console.log("10secspassed")} , 3000);
 

@@ -41,7 +41,7 @@ export class CreateroomComponent implements OnInit {
   }
 
   createroom() {
-    this.db.collection("Rooms").add({ "maxplayers": Number(this.name.get("players").value), "status": false, "Turn": 0 }).then((res: any) => {
+    this.db.collection("Rooms").add({ "maxplayers": Number(this.name.get("players").value), "status": false, "Turn": 0, "createdby":  this.name.get("nameuser").value}).then((res: any) => {
       // console.log(res);
       localStorage.setItem('code', res.id);
       
@@ -68,10 +68,10 @@ export class CreateroomComponent implements OnInit {
           console.log(doc.id, " => ", doc.data());
           var post = 0
 
-          if (doc.data().name == this.name.get("nameuser").value) {
+          if (doc.data().name.split("-")[1] == this.name.get("nameuser").value) {
             post += 1;
           }
-          if (post != 0) this.name.get("nameuser").setValue(this.name.get("nameuser").value + post.toString());
+          if (post != 0) this.name.get("nameuser").setValue(this.name.get("nameuser").value + "-" + post.toString());
 
         });
         resolve(i);

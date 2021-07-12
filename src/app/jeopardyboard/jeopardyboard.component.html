@@ -1,22 +1,23 @@
 <div class="main">
-    <div class = "ppoints">+{{plus}}</div><div class = "npoints">-{{minus}}</div>
+    <div class = "ppoints">+{{plus}}</div><div class = "npoints">{{minus}}</div>
     <div class = "players">
         <div class = "player" *ngFor = "let x of scores">
-            <div style="display: flex;">{{x.payload.doc.data().name}} : {{x.payload.doc.data().Score}}</div>
+            <div style="display: flex; font-size: 200%;">{{x.payload.doc.data().name}} : {{x.payload.doc.data().Score}}</div>
             
         </div>
     </div>
     <div class="board">
         <div class="title">
-            <!-- <img class="" src="../../assets/images/jeopardy.png"> -->
+            <img class="" src="../../assets/images/jeopardy.png">
+            <div>{{gamename}} 's game</div>
         </div>
         <div class="topics">
-            <div class="topic"*ngFor = "let x of [0, 1, 2]"></div>
+            <div class="topic"*ngFor = "let x of topicnames">{{x}}</div>
         </div>
         <div class="options">
             <div class="rows" *ngFor = "let x of [0, 1, 2]">
-                <div class="option"*ngFor = "let y of [0, 1, 2]" (click) = "question(x, y)">
-                    {{x}} {{y}}
+                <div class="optionboard"*ngFor = "let y of [0, 1, 2]" (click) = "question(x, y)">
+                    &#8377; {{(y+1)*200}}
                 </div>
             </div>
         </div>
