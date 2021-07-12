@@ -31,6 +31,7 @@ import { ReachedComponent } from './reached/reached.component';
 import { CreateroomComponent } from './createroom/createroom.component';
 import { JEOPARDYBOARDComponent } from './jeopardyboard/jeopardyboard.component';
 import { TryComponent } from './try/try.component';
+import { ScoreboardComponent } from './scoreboard/scoreboard.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { TryComponent } from './try/try.component';
     ReachedComponent,
     CreateroomComponent,
     JEOPARDYBOARDComponent,
-    TryComponent
+    TryComponent,
+    ScoreboardComponent
   ],
   imports: [
     BrowserModule,
