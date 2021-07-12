@@ -18,6 +18,7 @@
         <div class="options">
             <div class="rows" *ngFor = "let x of [0, 1, 2]">
                 <div class="optionboard"*ngFor = "let y of [0, 1, 2]" (click) = "question(x, y)">
+                    <div class = "blabla" *ngIf = "this.inarr((x*3)+y)"></div>
                     &#8377; {{(y+1)*200}}
                 </div>
             </div>
@@ -57,7 +58,9 @@
     <app-scoreboard *ngIf = "gameend" style="position: absolute; top: 0; left: 0;"></app-scoreboard>
     <div class = "correct">Correct!</div>
     <div class = "custbutton end" (click) = "endgame()" *ngIf = "gameend">End game</div>
-    
+    <div class = "codeshow" *ngIf = "!status" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 100%; flex-basis: 50%; margin-top: 0%; position: absolute; top: 0; left: 0; color: white; font-size: 200%;">Share this CODE: {{getcode()}}</div>
+    <div *ngIf = "!generated" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 100%; flex-basis: 50%; margin-top: 0%; position: absolute; top: 50vh; left: 40vw; color: white; font-size: 200%;">Generating questions.....</div>
+    <div *ngIf = "!status && noofplayers != maxplayer && generated" style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 100%; flex-basis: 50%; margin-top: 0%; position: absolute; top: 50vh; left: 40vw; color: white; font-size: 200%;">Waiting for players.....</div>
     <!-- <div class = "custbutton" style = "position: absolute; top: 2vh; right: 2vw" *ngIf = "status" (click) = "answer()">Answer</div> -->
 </div>
 <!-- *ngIf = "gameend" -->

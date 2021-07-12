@@ -18,6 +18,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   private ctx: AudioContext;
 
   topics: Array<any> = [];
+
   topicnames: Array<string> = [];
   maxplayer: any;
   currentquestion: any;
@@ -39,6 +40,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
   plus = 0;
   minus = 0;
   gamename = "";
+  generated: boolean = false;
   constructor(private db: AngularFirestore, private router: Router) { }
 
   ngOnInit(): void {
@@ -78,7 +80,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     this.db.collection("Rooms").doc(localStorage.getItem("code")).collection("Players").snapshotChanges().subscribe((res: any) => {
       this.noofplayers = res.length;
       this.scores = res;
-      // console.log(this.scores);
+      console.log("...", this.scores);
       this.getturn();
     })
   }
@@ -136,6 +138,7 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
             var rand = Math.trunc(Math.random() * (res.length));
             this.questions[x]["Difficult"] = (res[rand].payload.doc.id);
             res.slice(rand, 1);
+            this.generated = true;
             console.log(this.questions)
             // }
 
@@ -215,13 +218,15 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     this.db.collection("Rooms").doc(code).collection("Players").doc(name).delete().then(res => {
       this.db.collection("Rooms").doc(name).collection("Players").snapshotChanges().subscribe((res:any) => {
         console.log(res.length == 0);
-        if (!res || res == undefined || res.type == "removed" || res.length == 0) {console.log("...!!!"); this.db.collection("Rooms").doc(code).delete().then(res => {console.log("DELETED!")});}
-        localStorage.removeItem("code");
-        localStorage.removeItem("name");
-        localStorage.removeItem("player");
-        this.router.navigate(['/createroom'])
+        
+        if (!res || res == undefined || res.type == "removed" || res.length == 0) {console.log("...!!!"); this.db.collection("Rooms").doc(code).delete().then(res => {this.router.navigate(['/createroom'])});}
+        else this.router.navigate(['/createroom'])
       })
     })
+    localStorage.removeItem("code");
+    localStorage.removeItem("name");
+    localStorage.removeItem("player");
+    
   }
 
   getcode(){
