@@ -240,6 +240,13 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
     var increment;
     if (x.toString() == (this.questionnow.payload.data().Answer).split("o")[1]) {
       console.log("correct");
+      this.stopmusic();
+      this.sound1.play();
+     this.sound1.on('end', function(){
+        console.log('Finished!');
+        this.startmusic();
+      });
+
       // this.correct = true;
       this.plus = (this.cury + 1) * 200 * Number(this.questionnow.payload.data().Multiplier)
       // $(".correct").css("display", "block");
@@ -279,6 +286,10 @@ export class JEOPARDYBOARDComponent implements OnInit, OnDestroy {
      src: ['../../assets/audio/sound.mp3'],
      volume: 0.2
    });
+   sound1:any = new Howl({
+    src: ['../../assets/audio/cheer.mp3'],
+    volume: 0.2
+  });
    startmusic(){
      this.sound.play();
      console.log("start")
