@@ -33,17 +33,18 @@
        
     </div>
     <!-- <div style = "font-size: 200%;" *ngFor = "let x of scores">{{x.payload.doc.data().Score}}</div> -->
-    <div *ngIf = "popup" class="loader" (click) = "popup = false;stopmusic();">
+    <div *ngIf = "popup" class="loader" (click) = "popup = false;">
         <model-viewer  interaction-policy="allow-when-focused" style="margin-left:13%"camera-controls src="./assets/images/jeopardy/scene.gltf" auto-rotate rotation-per-second="70deg">
             <!-- <div style = "z-index: 1000; position: absolute; top: 0; left: 0; height: 10vh; width: 10vw; background-color: aqua;"></div> -->
           </model-viewer>
           <div class="text">JEOPARDY!</div>
           <h1>This is Jeopardy!</h1>
-         <audio autoplay="true" preload="auto" src="./../../assets/audio/Jeopardyintro.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-          </audio>
+         
           <!-- <h2> Today's contestants are V A and J</h2> -->
     </div>
+    <audio autoplay="true" preload="auto" src="./../../assets/audio/Jeopardyintro.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     
     <div class = "question" *ngIf = "picked">
         <div class = "ques">
