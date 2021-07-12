@@ -1,15 +1,29 @@
-.scoreboard{
+.scoreboard {
     // background-color: black;
-    background-image: linear-gradient(to right top, #d16ba5dd, #c777b8dd, #ba83cadd, #aa8fd8dd, #9a9ae1dd, #8aa7ecdd, #79b2f4dd, #69bff8dd, #52cffedd, #41dfffdd, #46eefadd, #5ffbf1dd); 
+    background-image: linear-gradient(
+        to right top,
+        #d16ba5dd,
+        #c777b8dd,
+        #ba83cadd,
+        #aa8fd8dd,
+        #9a9ae1dd,
+        #8aa7ecdd,
+        #79b2f4dd,
+        #69bff8dd,
+        #52cffedd,
+        #41dfffdd,
+        #46eefadd,
+        #5ffbf1dd
+    );
     height: 100vh;
     width: 100vw;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0 0 0 0;
 }
-.title{
+.title {
     font-family: pretty;
     font-weight: 700;
     font-size: 500%;
@@ -17,9 +31,9 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.board{
+.board {
     border-radius: 10%;
-    height:80%;
+    height: 80%;
     width: 80%;
     // background-color: #46eefa	;
     display: flex;
@@ -27,22 +41,21 @@
     justify-content: center;
     align-items: center;
 }
-.scores{
+.scores {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    height:80%;
-    width:80%;
-
+    height: 80%;
+    width: 80%;
 }
-.scoreboard img{
-    position:absolute;
+.scoreboard img {
+    position: absolute;
 }
-.player{
+.player {
     height: 40%;
-    
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 700;
     font-size: 200%;
     z-index: 1;
@@ -55,30 +68,39 @@
     box-shadow: 5px 5px 5px #e6c79c;
     // font-family: pretty;
 }
-.scores img{
+.scores img {
     position: absolute;
-    left:17%;
+    left: 17%;
     animation: rotation 5s infinite linear;
     z-index: 0;
-
 }
 @keyframes rotation {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     to {
-      transform: rotate(359deg);
+        transform: rotate(359deg);
     }
-  }
+}
 
-  .first{
+.first {
     background-color: #bbf0f3;
     background-color: #ffc857;
     background-color: #e6c79c;
     background-image: linear-gradient(315deg, #e6c79c 0%, #d6a3a3 74%);
-  }
+}
 
-  .second{
+.second {
     background-color: #f3e6e8;
     background-image: linear-gradient(315deg, #f3e6e8 0%, #d5d0e5 74%);
-  }
+}
+
+.third {
+    background-color: #aecad6;
+    background-image: linear-gradient(315deg, #aecad6 0%, #b8d3fe 74%);
+}
+
+.fourth {
+    background-color: #d9d9d9;
+    background-image: linear-gradient(315deg, #d9d9d9 0%, #f6f2f2 74%);
+}

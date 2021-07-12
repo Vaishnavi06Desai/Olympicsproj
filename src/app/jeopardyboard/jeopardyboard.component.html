@@ -25,7 +25,7 @@
         </div>
        
     </div>
-    <div style = "font-size: 200%;" *ngFor = "let x of scores">{{x.payload.doc.data().Score}}</div>
+    <!-- <div style = "font-size: 200%;" *ngFor = "let x of scores">{{x.payload.doc.data().Score}}</div> -->
     <div *ngIf = "popup" class="loader" (click) = "popup = false;stopmusic();">
         <model-viewer  interaction-policy="allow-when-focused" style="margin-left:13%"camera-controls src="./assets/images/jeopardy/scene.gltf" auto-rotate rotation-per-second="70deg">
             <!-- <div style = "z-index: 1000; position: absolute; top: 0; left: 0; height: 10vh; width: 10vw; background-color: aqua;"></div> -->
@@ -53,7 +53,7 @@
 
     </div>
     <!-- <div class = "custbutton" style = "position: absolute; top: 2vh; left: 2vw" (click) = "bla()">bla</div> -->
-    <div class = "custbutton" style = "position: absolute; top: 2vh; right: 2vw" *ngIf = "!status && noofplayers == maxplayer" (click) = "startgame()">Start Game</div>
+    <div class = "custbutton" style = "position: absolute; top: 2vh; right: 2vw" *ngIf = "!status && noofplayers == maxplayer && generated" (click) = "startgame()">Start Game</div>
 
     <app-scoreboard *ngIf = "gameend" style="position: absolute; top: 0; left: 0;"></app-scoreboard>
     <div class = "correct">Correct!</div>

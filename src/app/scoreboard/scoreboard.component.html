@@ -9,7 +9,9 @@
             
             <div class="player" *ngFor="let x of scores; let i = index" [ngClass] = "{
                 'first': i == 0,
-                'second': i == 1
+                'second': i == 1,
+                'third': i == 2,
+                'fourth': i == 3
             }">
                 <div style="font-size: 120%;">Place {{i + 1}}</div>
                 <div>Name: {{x.name}}</div>
