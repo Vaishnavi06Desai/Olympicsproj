@@ -69,7 +69,3 @@ To run **Olympicproj2** locally, follow these steps:
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
-
-## Credits
-
-- **Game assets**: Various open-source game libraries.
