@@ -1,27 +1,75 @@
 # Olympicproj2
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
+![Olympicproj2 - Game UI](https://github.com/user-attachments/assets/83209eb5-fff6-4c94-8568-ec3813825973)
 
-## Development server
+**Olympicproj2** is a fun and engaging game platform developed during a hackathon. Built using Angular, this project features various popular games like Mastermind, Escape Room, Jeopardy, and more. It’s designed to entertain and challenge users, offering a variety of interactive games in a single app.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Features
+- **Mastermind**: A classic code-breaking game where users guess a secret code.
+- **Escape Room**: A puzzle game where players solve riddles and mysteries to escape.
+- **Jeopardy**: The famous quiz game where players answer trivia questions from various categories.
+- **User-Friendly UI**: A sleek and intuitive interface to navigate through different games.
 
-## Code scaffolding
+## Screenshots
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Mastermind Gameplay
+![Mastermind Game](https://github.com/user-attachments/assets/c4cee9ec-fdc0-4328-8da3-e5692987e4f7)
 
-## Build
+### Escape Room Gameplay
+![Escape Room](https://github.com/user-attachments/assets/dc32e6c0-2aea-43b2-b37a-0c85f8c47fed)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Built With
+- **Angular**: The frontend framework used to develop the application.
+- **CSS/HTML**: For designing the game interfaces.
 
-## Running unit tests
+## Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To run **Olympicproj2** locally, follow these steps:
 
-## Running end-to-end tests
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/Olympicproj2.git
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+2. Navigate to the project directory:
+   ```sh
+   cd Olympicproj2
+   ```
 
-## Further help
+3. Install the required dependencies:
+   ```sh
+   npm install
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4. Run the application:
+   ```sh
+   ng serve
+   ```
+
+5. Open your browser and visit:
+   [http://localhost:4200](http://localhost:4200)
+
+## Contributing
+
+1. Fork the repository.
+2. Create a new branch:
+   ```sh
+   git checkout -b feature/your-feature-name
+   ```
+3. Make your changes and commit them:
+   ```sh
+   git commit -m 'Add new game feature'
+   ```
+4. Push to the branch:
+   ```sh
+   git push origin feature/your-feature-name
+   ```
+5. Open a pull request.
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Credits
+
+- **Game assets**: Various open-source game libraries.
